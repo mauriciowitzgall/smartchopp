@@ -1,10 +1,11 @@
 <?php
 
 include "global.php";
-$menuselecionado="consumidores";
+$menuselecionado="atendimentos";
 include "menu.php";
 
-$tpl = new Template("consumidores.html");
+
+$tpl = new Template("chopes.html");
 $tpl->show();
 
 
