@@ -1,0 +1,31 @@
+
+<script src="chopes_cadastrar.js"></script>
+
+<div class="container">
+  <form class="form-horizontal" action="chopes_cadastrar_salvar.php?operacao={OPERACAO}&codigo={CODIGO}" method="POST">
+    <div class="control-group">
+      <label class="control-label"><strong>Nome *</strong></label>
+      <div class="controls">
+        <input class="input-large" type="text" placeholder="" name="nome" required="required" value="{NOME}">
+        
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label "><strong>Valor Unitário Venda *</strong></label>
+      <div class="controls">
+        <input class="input-medium" type="text" id="dinheiro" placeholder="R$ 0,00" name="valuni" value="{VALUNI}" onkeyup="" required="required"><span class="help-inline">por litro</span>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Descrição</label>
+      <div class="controls">
+        <textarea rows="3" name="descricao" class="input-xxlarge">{DESCRICAO}</textarea>        
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </form>
+</div>

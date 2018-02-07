@@ -1,0 +1,24 @@
+
+<script src="cartoes_cadastrar.js"></script>
+
+<div class="container">
+  <form class="form-horizontal" action="cartoes_cadastrar_salvar.php?operacao={OPERACAO}&codigo={CODIGO}" method="POST">
+    <div class="control-group">
+      <label class="control-label"><strong>RFID *</strong></label>
+      <div class="controls">
+        <input class="input-large" type="text" placeholder="" name="rfid" required="required" value="{RFID}">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label ">Referência</label>
+      <div class="controls">
+        <input class="input-medium" type="text" id="" placeholder="" name="referencia" value="{REFERENCIA}" onkeyup="" ><span class="help-inline"></span>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </form>
+</div>

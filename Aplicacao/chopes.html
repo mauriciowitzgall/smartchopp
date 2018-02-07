@@ -3,7 +3,7 @@
     <input type="text" class="input-xlarge search-query" name="busca" value="{BUSCA}">
     <input type="hidden" class="" name="novabusca" value="1">
     <button type="submit" class="btn"><i class="icon-search icon-black"></i></button>
-    <a href="consumidores_cadastrar.php?operacao=1"><button class="btn btn-primary" type="button">Cadastrar</button></a>
+    <a href="chopes_cadastrar.php?operacao=1"><button class="btn btn-primary" type="button">Cadastrar</button></a>
   </form>
 </div>
 <div class="" style="border:20px solid #ffffff">
@@ -12,10 +12,8 @@
       <tr>
         <th>#</th>
         <th>Nome</th>
-        <th>Telefone</th>
-        <th>CPF</th>
-        <th>E-mail</th>
-        <th width="" >Data Cadastro</th>
+        <th>Valor Unit.</th>
+        <th>Descrição</th>
         <th width="5%" colspan="2">Operações</th>
       </tr>
     </thead>
@@ -23,14 +21,12 @@
       <!-- BEGIN BLOCK_LINHA -->
       <tr>
         <th scope="row">{CODIGO}</th>
-        <td>{NOME}</td>
-        <td>{FONE}</td>
-        <td>{CPF}</td>
-        <td>{EMAIL}</td>
-        <td>{DATAHORA_CADASTRO}</td>
+        <td>{NOME}</td>        
+        <td>{VALUNI}</td>
+        <td>{DESCRICAO}</td>
         <td>
           <!-- BEGIN BLOCK_EDITAR -->
-            <a class="btn" href="consumidores_cadastrar.php?operacao=2&codigo={CODIGO}" title="Editar"><i class="icon-pencil"></i></a>
+            <a class="btn" href="chopes_cadastrar.php?operacao=2&codigo={CODIGO}" title="Editar"><i class="icon-pencil"></i></a>
           <!-- END BLOCK_EDITAR -->     
           <!-- BEGIN BLOCK_EDITAR_DESABILITADO -->
             <a class="btn disabled" href="#" title="{EDITAR_DESCRICAO}"><i class="icon-pencil"></i></a>
@@ -38,7 +34,7 @@
         </td>
         <td>     
           <!-- BEGIN BLOCK_DELETAR -->       
-          <a class="btn btn-danger" href="consumidores_deletar.php?codigo={CODIGO}" title="Apagar"><i class="icon-trash  icon-white"></i></a>
+          <a class="btn btn-danger" href="chopes_deletar.php?codigo={CODIGO}" title="Apagar"><i class="icon-trash  icon-white"></i></a>
           <!-- END BLOCK_DELETAR -->       
           <!-- BEGIN BLOCK_DELETAR_DESABILITADO -->
             <a class="btn disabled" href="#" title="{DELETAR_DESCRICAO}" ><i class="icon-trash"></i></a>

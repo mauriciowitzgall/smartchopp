@@ -1,10 +1,3 @@
-<html>
-<head><title>:: jQuery ::</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<script language="JavaScript" type="text/javascript"
-src="js/jquery.js"></script>
-</head>
-<script>
 var mask = {
  money: function() {
     var el = this
@@ -28,13 +21,3 @@ var mask = {
  }
 
 }
-
-$(function(){
- $("#dinheiro").bind('keypress',mask.money)
-});
-
-</script>
-<body>
-<input type="text" id="dinheiro" maxlength="10" />
-</body>
-</html> 
