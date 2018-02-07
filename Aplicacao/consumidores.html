@@ -1,6 +1,6 @@
 <div class="" align="center">
   <form class="form-search" method="post">
-    <input type="text" class="input-large search-query" name="busca" value="{BUSCA}">
+    <input type="text" class="input-xlarge search-query" name="busca" value="{BUSCA}">
     <input type="hidden" class="" name="novabusca" value="1">
     <button type="submit" class="btn"><i class="icon-search icon-black"></i></button>
     <a href="consumidores_cadastrar.php?operacao=1"><button class="btn btn-primary" type="button">Cadastrar</button></a>
@@ -15,6 +15,7 @@
         <th>Telefone</th>
         <th>CPF</th>
         <th>E-mail</th>
+        <th width="" >Data Cadastro</th>
         <th width="5%" colspan="2">Operações</th>
       </tr>
     </thead>
@@ -26,6 +27,7 @@
         <td>{FONE}</td>
         <td>{CPF}</td>
         <td>{EMAIL}</td>
+        <td>{DATAHORA_CADASTRO}</td>
         <td>
           <!-- BEGIN BLOCK_EDITAR -->
             <a class="btn" href="consumidores_cadastrar.php?operacao=2&codigo={CODIGO}" title="Editar"><i class="icon-pencil"></i></a>

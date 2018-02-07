@@ -29,7 +29,7 @@ $sql="
 	WHERE 1 
 	$sql_filtro
 	$filtro_paginacao
-	ORDER BY codigo
+	ORDER BY codigo desc
 ";
 
 //Paginação
@@ -40,14 +40,13 @@ $paginacao_anterior_inicio=$paginacao_inicio-$paginacao_qtdporpagina;
 $paginacao_proxima_inicio=$paginacao_inicio+$paginacao_qtdporpagina;
 if (!$query=mysql_query($sql)) die("Erro SQL PAGINACAO: ".mysql_error());
 $paginacao_qtditens=mysql_num_rows($query);
-
 if ($paginacao_inicio==0) {
 	$tpl->PAGINACAO_ANTERIOR_CLASSE="disabled";
 	$tpl->PAGINACAO_ANTERIOR_LINK="#";
 } else {
 	$tpl->PAGINACAO_ANTERIOR_LINK="consumidores.php?paginacao_inicio=$paginacao_anterior_inicio&busca=$busca";
 }
-if ($paginacao_proxima_inicio>$paginacao_qtditens) {
+if ($paginacao_proxima_inicio>=$paginacao_qtditens) {
 	$tpl->PAGINACAO_PROXIMA_LINK="#";
 	$tpl->PAGINACAO_PROXIMA_CLASSE="disabled";
 } else {
@@ -66,9 +65,9 @@ while ($dados=mysql_fetch_assoc($query)) {
 	$tpl->FONE=$dados["telefone"];
 	$tpl->CPF=$dados["cpf"];
 	$tpl->EMAIL=$dados["email"];
-	$valuni=$dados["valuni"];
-	$chopeira_nome=$dados["chopeira"];
-	$chope_nome=$dados["chope"];
+	$datahora_cadastro=$dados["datahora_cadastro"];
+	$tpl->DATAHORA_CADASTRO=converte_datahora($datahora_cadastro);
+	
 
 	$tpl->block("BLOCK_EDITAR");
 	//$tpl->block("BLOCK_EDITAR_DESABILITADO");

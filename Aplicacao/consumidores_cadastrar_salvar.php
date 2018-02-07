@@ -8,7 +8,7 @@ include "menu.php";
 //print_r($_POST);
 
 $codigo=$_GET["codigo"];
-$nome=$_POST["nome"];
+$nome=mb_convert_case($_POST["nome"], MB_CASE_TITLE, "UTF-8");
 $telefone=$_POST["telefone"];
 $cpf=$_POST["cpf"];
 $email=$_POST["email"];
@@ -24,7 +24,7 @@ if ($operacao==1) {
 	";
 	if (!$query=mysql_query($sql)) die("Erro SQL INSERT: ".mysql_error());
 } else if ($operacao==2) {
-	echo $sql="
+	$sql="
 		UPDATE consumidores SET nome='$nome',telefone='$telefone',cpf='$cpf',email='$email' WHERE codigo=$codigo
 	";
 	if (!$query=mysql_query($sql)) die("Erro SQL UPDATE: ".mysql_error());

@@ -1,33 +1,37 @@
+
+<script src="consumidores_cadastrar.js"></script>
+
 <div class="container">
   <form class="form-horizontal" action="consumidores_cadastrar_salvar.php?operacao={OPERACAO}&codigo={CODIGO}" method="POST">
     <div class="control-group">
-      <label class="control-label">Nome</label>
+      <label class="control-label"><strong>Nome*</strong></label>
       <div class="controls">
-        <input type="text" id="nome" placeholder="Nome Sobrenome" name="nome" required="required" value="{NOME}">
+        <input type="text" id="inputWarning"" placeholder="" name="nome" required="required" value="{NOME}">
+        
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label">Telefone</label>
+      <label class="control-label ">Telefone</label>
       <div class="controls">
-        <input type="text" id="telefone" placeholder="(54)98888-8888" name="telefone" required="required" value="{TELEFONE}">
+        <input type="text" id="telefone" placeholder="" name="telefone" value="{TELEFONE}" onkeyup=""  maxlength="15">
       </div>
     </div>
     <div class="control-group">
       <label class="control-label">CPF</label>
       <div class="controls">
-        <input type="text" id="cpf" placeholder="999.999.999-99" name="cpf" value="{CPF}">
+        <input type="text" id="cpf" placeholder="" name="cpf" value="{CPF}" onkeydown="javascript: fMasc( this, mCPF );" maxlength="14" onblur="valida_cpf(this.value);">
       </div>
     </div>
     <div class="control-group">
       <label class="control-label">E-mail</label>
       <div class="controls">
-        <input type="text" id="email" placeholder="meunome@gmail.com" name="email" value="{EMAIL}">
+        <input type="text" id="email" placeholder="" name="email" value="{EMAIL}">
       </div>
     </div>
             
     <div class="control-group">
       <div class="controls">
-        <button type="submit" class="btn">Salvar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
       </div>
     </div>
   </form>
