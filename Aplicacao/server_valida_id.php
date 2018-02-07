@@ -10,7 +10,8 @@ $equipamento=$_GET["equip"];
 
 //Verifica se foi recebido todos os campos do get
 if (($rfid=="")||($equipamento=="")) {
-	echo "ERRO: Você esqueceu de enviar algum parametro por GET!";
+	echo "0";
+	//echo "ERRO: Você esqueceu de enviar algum parametro por GET!";
 	exit;	
 }
 
@@ -26,16 +27,18 @@ $sql="
 if (!$query=mysql_query($sql)) die("Erro SQL 1: ".mysql_error());
 $linhas=mysql_num_rows($query);
 if ($linhas>1) {
-	echo "ERRO: Há mais de um atendimento ativo com este cartão!";
+	//echo "ERRO: Há mais de um atendimento ativo com este cartão!";
+	echo "0";
 	exit;
 }
 if ($linhas==0) {
-	echo "ERRO: Há um atendimento ativo com este mesmo cartão!";
+	//echo "ERRO: Há um atendimento ativo com este mesmo cartão!";
+	echo "0";
 	exit;
 }
 $dados=mysql_fetch_assoc($query);
 $atendimento=$dados["atendimento_codigo"];
-print_r("<br> Atendimento: $atendimento");
+//print_r("<br> Atendimento: $atendimento");
 
 //Verifica qual é o valor unitário do chope
 $sql="
@@ -50,8 +53,8 @@ if (!$query=mysql_query($sql)) die("Erro SQL 2: ".mysql_error());
 $dados=mysql_fetch_assoc($query);
 $valuni=$dados["valuni"];
 $chope=$dados["chope"];
-print_r("<br> Chope: $chope");
-print_r("<br> Valor Unitário: $valuni ");
+//print_r("<br> Chope: $chope");
+//print_r("<br> Valor Unitário: $valuni ");
 
 //Verifica qual é o total de crédito efetuados
 $sql="
@@ -62,7 +65,7 @@ $sql="
 if (!$query=mysql_query($sql)) die("Erro SQL 2: ".mysql_error());
 $dados=mysql_fetch_assoc($query);
 $totcreditos=$dados["totcreditos"];
-print_r("<br> Total Créditos: $totcreditos ");
+//print_r("<br> Total Créditos: $totcreditos ");
 
 //Verifica qual é o total consumido
 $sql="
@@ -75,15 +78,18 @@ if (!$query=mysql_query($sql)) die("Erro SQL 2: ".mysql_error());
 $dados=mysql_fetch_assoc($query);
 $totconsumido=$dados["valtot"];
 
-print_r("<br> Total Consumido: ".number_format($totconsumido,2));
+//print_r("<br> Total Consumido: ".number_format($totconsumido,2));
 
 //Saldo disponível
 $saldo=$totcreditos-$totconsumido;
-print_r("<br> Saldo: ".number_format($saldo,2));
+//print_r("<br> Saldo: ".number_format($saldo,2));
 
 //asdf
 $qtdmaxima=$saldo/$valuni;
-print_r("<br> Quantidade máxima: ".number_format($qtdmaxima,3));
+//print_r("<br> Quantidade máxima: ".number_format($qtdmaxima,3));
+$qtdmaxima=number_format($qtdmaxima,3);
+$valuni=number_format($valuni,2);
 
+echo "1|$qtdmaxima|$valuni";
 
 ?>
