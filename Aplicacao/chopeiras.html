@@ -1,30 +1,58 @@
-<table class="table">
-  <thead class="thead-inverse">
-    <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+<div class="" align="center">
+  <form class="form-search" method="post">
+    <input type="text" class="input-xlarge search-query" name="busca" value="{BUSCA}">
+    <input type="hidden" class="" name="novabusca" value="1">
+    <button type="submit" class="btn"><i class="icon-search icon-black"></i></button>
+    <a href="chopeiras_cadastrar.php?operacao=1"><button class="btn btn-primary" type="button">Cadastrar</button></a>
+  </form>
+</div>
+<div class="" style="border:20px solid #ffffff">
+  <table class="table table-hover table table-condensed"> 
+    <thead class="thead-inverse">
+      <tr>
+        <th>#</th>
+        <th>Chopeira</th>
+        <th colspan="2">Quantidade</th>        
+        <th>Chope</th>        
+        <th>Equipamento</th>        
+        <th width="5%" colspan="2">Operações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- BEGIN BLOCK_LINHA -->
+      <tr>
+        <th scope="row">{CODIGO}</th>
+        <td>{NOME}</td>        
+        <td width="150px">
+          <div class="progress progress-striped active" >
+            <div class="bar {BARRINHA_COR}" style="width: {PERCENTUAL}%;" ></div>
+          </div>
+        </td>
+        <td  width="50px"><span class="add-on">{PERCENTUAL}%</span></td>
+        <td>{CHOPE}</td>
+        <td width="">{EQUIPAMENTO}</td>        
+        <td>
+          <!-- BEGIN BLOCK_EDITAR -->
+            <a class="btn" href="chopeiras_cadastrar.php?operacao=2&codigo={CODIGO}" title="Editar"><i class="icon-pencil"></i></a>
+          <!-- END BLOCK_EDITAR -->     
+          <!-- BEGIN BLOCK_EDITAR_DESABILITADO -->
+            <a class="btn disabled" href="#" title="{EDITAR_DESCRICAO}"><i class="icon-pencil"></i></a>
+          <!-- END BLOCK_EDITAR_DESABILITADO -->                  
+        </td>
+        <td>     
+          <!-- BEGIN BLOCK_DELETAR -->       
+          <a class="btn btn-danger" href="chopeiras_deletar.php?codigo={CODIGO}" title="Apagar"><i class="icon-trash  icon-white"></i></a>
+          <!-- END BLOCK_DELETAR -->       
+          <!-- BEGIN BLOCK_DELETAR_DESABILITADO -->
+            <a class="btn disabled" href="#" title="{DELETAR_DESCRICAO}" ><i class="icon-trash"></i></a>
+          <!-- END BLOCK_DELETAR_DESABILITADO -->              
+        </td>
+      </tr>
+      <!-- END BLOCK_LINHA -->
+    </tbody>
+  </table>
+  <ul class="pager">
+    <li class="{PAGINACAO_ANTERIOR_CLASSE}"><a href={PAGINACAO_ANTERIOR_LINK}>Antetior</a></li>
+    <li class="{PAGINACAO_PROXIMA_CLASSE}"><a href="{PAGINACAO_PROXIMA_LINK}">Próxima</a></li>
+</ul>
+</div>

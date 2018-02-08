@@ -1,0 +1,51 @@
+<script src="chopeiras_cadastrar.js"></script>
+
+<div class="container">
+  <form class="form-horizontal" action="chopeiras_cadastrar_salvar.php?operacao={OPERACAO}&codigo={CODIGO}" method="POST">
+    <div class="control-group">
+      <label class="control-label"><strong>Nome *</strong></label>
+      <div class="controls">
+        <input class="input-large" type="text" placeholder="" name="nome" required="required" value="{NOME}">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label "><strong>Chope *</strong></label>
+      <div class="controls">
+        <select name="chope">
+          <option> Selecione </option>
+          <!-- BEGIN BLOCK_OPTION_CHOPE -->
+          <option {OPTION_CHOPE_SELECIONADO} value="{OPTION_CHOPE_VALOR}"> {OPTION_CHOPE_NOME} </option>
+          <!-- END BLOCK_OPTION_CHOPE -->
+        </select>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label "><strong>Equipamento *</strong></label>
+      <div class="controls">
+        <select name="equipamento">
+          <option> Selecione </option>
+          <!-- BEGIN BLOCK_OPTION_EQUIPAMENTO -->
+          <option {OPTION_EQUIPAMENTO_SELECIONADO} value="{OPTION_EQUIPAMENTO_VALOR}"> {OPTION_EQUIPAMENTO_NOME} </option>
+          <!-- END BLOCK_OPTION_EQUIPAMENTO -->
+        </select>      
+      </div>
+    </div> 
+    <div class="control-group">
+      <label class="control-label "><strong>Capacidade *</strong></label>
+      <div class="controls">
+        <input class="input-medium" type="text"  id="capacidade" placeholder="0,000" name="capacidade" value="{CAPACIDADE}" onkeyup="" ><span class="help-inline"></span>
+      </div>
+    </div>  
+    <div class="control-group">
+      <label class="control-label "><strong>Quantidade Atual *</strong></label>
+      <div class="controls">
+        <input class="input-medium" type="text"  id="quantidade" placeholder="0,000" name="quantidade" value="{QUANTIDADE}" onkeyup="" ><span class="help-inline"></span>
+      </div>
+    </div>         
+    <div class="control-group">
+      <div class="controls">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </form>
+</div>

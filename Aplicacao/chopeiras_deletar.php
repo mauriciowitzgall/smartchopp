@@ -2,7 +2,7 @@
 <?php
 
 include "global.php";
-$menuselecionado="cartoes";
+$menuselecionado="chopeiras";
 include "menu.php";
 
 print_r($_POST);
@@ -19,11 +19,11 @@ error_reporting(E_ERROR | E_PARSE);
 
 
 $sql="
-	DELETE FROM cartoes WHERE codigo=$codigo;
+	DELETE FROM chopeiras WHERE codigo=$codigo;
 ";
 if (!$query=mysql_query($sql)) die("Erro SQL DELETE: ".mysql_error());
 
-header("Location:"."cartoes.php");
+header("Location:"."chopeiras.php");
 die();
 
 
