@@ -1,43 +1,45 @@
+<form class="form-inline">
+    <table class="" align="right" width="100%" border="0">
+      <tr>
+        <td>
+          <label class="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>   
+          <label class="">
+            <strong>Atendimento</strong><br>
+            <input class="input-small" type="text" value="{ATENDIMENTO}" disabled="" align="center">
+          </label>
+          <label class="">&nbsp;&nbsp;&nbsp;&nbsp;</label>   
+          <label class="">
+            <strong>Consumidor</strong><br>
+            <input class="input-xlarge" type="text" value="{CONSUMIDOR}" disabled="" align="center">
+          </label> 
+          <label class="">&nbsp;&nbsp;&nbsp;&nbsp;</label>   
+          <label class="">
+            <strong>Saldo</strong><br>
+            <input class="input-medium" type="text" value="{SALDO}" disabled="" align="center">      
+          </label>   
+          <label class="">&nbsp;&nbsp;&nbsp;&nbsp;</label>   
+          <label class="">
+            <strong>Situação</strong><br>
+            <input class="input-medium " type="text" value="{SITUACAO}" disabled="" align="center">
+          </label> 
 
-<table class="form-horizontal" border="0" width="100%" align="left">
-  <tr align="">
-    <td width="20px"></td>  
-    <td align="left" width="100px">
-      <label class=""><strong>Atendimento</strong></label>
-      <input class="input-small" type="text" value="{ATENDIMENTO}" disabled="" align="center">
-    </td>
-    <td width="20px"></td>  
-    <td align="left" width="200px">
-      <label class=""><strong>Consumidor</strong></label>
-      <input class="input-xlarge" type="text" value="{CONSUMIDOR}" disabled="" align="center">
-    </td>
-    <td width="20px"></td>  
-    <td align="left" width="100px">
-      <label class=""><strong>Saldo</strong></label>
-      <input class="input-medium" type="text" value="{SALDO}" disabled="" align="center">
-    </td>  
-    <td width="20px"></td>  
-    <td align="left" width="100px">
-      <label class=""><strong>Situação</strong></label>
-      <input class="input-medium " type="text" value="{SITUACAO}" disabled="" align="center">
-    </td>   
-    <td width="20px"></td>   
-    <td align="right">
-      <label class="">&nbsp</label>
-       <!-- BEGIN BLOCK_BOTAO_INCLUIR -->
-       <a class="btn btn-primary" href="atendimentos_creditos_cadastrar.php?operacao=1&atendimento={ATENDIMENTO}" title="Cadastrar"><i class="icon-plus  icon-white"></i> Inserir crédito</a>
-       <!-- END BLOCK_BOTAO_INCLUIR -->
-       
-       <!-- BEGIN BLOCK_BOTAO_INCLUIR_DESABILITADO -->
-       <a class="btn " href="#" title="{BOTAO_INCLUIR_DESCRICAO}" disabled><i class="icon-plus"></i> Inserir crédito</a>
-       <!-- END BLOCK_BOTAO_INCLUIR_DESABILITADO -->       
-    </td>  
-    <td width="20px"></td>     
-  </tr>
-  <tr>
-    <td><br></td>  
-  </tr>
-</table>
+        </td>
+        <td>
+          &nbsp;<br>
+           <!-- BEGIN BLOCK_BOTAO_INCLUIR -->
+           <a class="btn btn-primary" href="atendimentos_creditos_cadastrar.php?operacao=1&atendimento={ATENDIMENTO}" title="Cadastrar"><i class="icon-plus  icon-white"></i> Inserir crédito</a>
+           <!-- END BLOCK_BOTAO_INCLUIR -->
+           
+           <!-- BEGIN BLOCK_BOTAO_INCLUIR_DESABILITADO -->
+           <a class="btn " href="#" title="{BOTAO_INCLUIR_DESCRICAO}" disabled><i class="icon-plus"></i> Inserir crédito</a>
+           <!-- END BLOCK_BOTAO_INCLUIR_DESABILITADO -->   
+        </td>
+      </tr>
+     </table>       
+  
+</form>
+
+
 
 
 <div class="" style="border:20px solid #ffffff">
