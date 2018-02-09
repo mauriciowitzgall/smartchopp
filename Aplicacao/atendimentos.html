@@ -1,30 +1,63 @@
-<table class="table">
-  <thead class="thead-inverse">
-    <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+<div class="" align="center">
+  <form class="form-search" method="post">
+    <input type="text" class="input-xlarge search-query" name="busca" value="{BUSCA}">
+    <input type="hidden" class="" name="novabusca" value="1">
+    <button type="submit" class="btn"><i class="icon-search icon-black"></i></button>
+    <a href="atendimentos_cadastrar.php?operacao=1"><button class="btn btn-primary" type="button">Cadastrar</button></a>
+  </form>
+</div>
+<div class="" style="border:20px solid #ffffff">
+  <table class="table table-hover table table-condensed"> 
+    <thead class="thead-inverse">
+      <tr>
+        <th>#</th>
+        <th>Consumidor</th>
+        <th>Modalidade</th>        
+        <th>Saldo</th>                
+        <th>Itens</th>                
+        <th width="10%" colspan="5">Operações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- BEGIN BLOCK_LINHA -->
+      <tr>
+        <th scope="row">{CODIGO}</th>
+        <td>{CONSUMIDOR}</td>                
+        <td><span class="{MODALIDADE_CLASSE}">{MODALIDADE}</span></td>
+        <td>{SALDO}</td>        
+        <td>{ITENS}</td>        
+        <td>
+          <!-- BEGIN BLOCK_CONSUMO -->
+            <a class="btn" href="atendimentos_consumo.php?codigo={CODIGO}" title="Consumo"><i class=" icon-th-list"></i></a>
+          <!-- END BLOCK_CONSUMO -->     
+          <!-- BEGIN BLOCK_CONSUMO_DESABILITADO -->
+            <a class="btn disabled" href="#" title="{CONSUMO_DESCRICAO}"><i class="icon-th-list"></i></a>
+          <!-- END BLOCK_CONSUMO_DESABILITADO -->                  
+        </td>                        
+        <td>
+          <!-- BEGIN BLOCK_CREDITOS -->
+            <a class="btn btn-success" href="atendimentos_creditos.php?codigo={CODIGO}" title="Créditos">
+              <span><strong>$</strong></span>
+            </a>
+          <!-- END BLOCK_CREDITOS -->     
+          <!-- BEGIN BLOCK_CREDITOS_DESABILITADO -->
+            <a class="btn disabled" href="#" title="{CREDITO_DESCRICAO}"><span><strong>$</strong></span></a>
+          <!-- END BLOCK_CREDITOS_DESABILITADO -->                  
+        </td>
+        <td>
+          <!-- BEGIN BLOCK_FINALIZAR -->
+            <a class="btn btn-danger" href="atendimentos_finalizar.php?codigo={CODIGO}" title="Finalizar Atendimento"><i class="icon-chevron-right icon-white"></i></a>
+          <!-- END BLOCK_FINALIZAR -->     
+          <!-- BEGIN BLOCK_FINALIZAR_DESABILITADO -->
+            <a class="btn disabled" href="#" title="{FINALIZAR_DESCRICAO}"><i class="icon-chevron-down"></i></a>
+          <!-- END BLOCK_FINALIZAR_DESABILITADO -->                  
+        </td>
+      </tr>
+      <!-- END BLOCK_LINHA -->
+    </tbody>
+  </table>
+  <ul class="pager">
+    <a class="btn {PAGINACAO_ANTERIOR_CLASSE}" href="{PAGINACAO_ANTERIOR_LINK}" title="Anterior"><i class="icon-chevron-left icon-black"></i> Anterior</a>
+    <a class="btn  {PAGINACAO_PROXIMA_CLASSE}" href="{PAGINACAO_PROXIMA_LINK}" title="Próxima">Próxima <i class="icon-chevron-right icon-black"></i></a> 
+</ul>
+</div>
