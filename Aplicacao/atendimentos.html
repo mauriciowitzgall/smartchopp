@@ -1,10 +1,25 @@
-<div class="" align="center">
-  <form class="form-search" method="post">
-    <input type="text" class="input-xlarge search-query" name="busca" value="{BUSCA}">
-    <input type="hidden" class="" name="novabusca" value="1">
-    <button type="submit" class="btn"><i class="icon-search icon-black"></i></button>
-    <a href="atendimentos_cadastrar.php?operacao=1"><button class="btn btn-primary" type="button">Novo atendimento</button></a>
-  </form>
+<form class="form-search" method="post">
+<table class="form-horizontal" border="0" width="100%" align="left">
+  <tr align="">
+    <td width="7px"></td>  
+    <td align="left" width="100px">
+      <input type="text" class="input-xxlarge search-query" name="busca" value="{BUSCA}">
+      <input type="hidden" class="" name="novabusca" value="1">
+      <button type="submit" class="btn"><i class="icon-search icon-black"></i> Pesquisar</button>      
+    </td>
+    <td width="20px"></td>  
+    <td align="right" width="200px">
+      <a href="atendimentos_cadastrar.php?operacao=1"><button class="btn btn-primary" type="button">Novo atendimento</button></a>      
+    </td>
+    <td width="7px"></td>      
+  </tr>
+  <tr>
+    <td><br></td>  
+  </tr>
+</table>
+</form>
+
+  
 </div>
 <div class="" style="border:20px solid #ffffff">
   <table class="table table-hover table table-condensed"> 
@@ -30,7 +45,7 @@
         <td><span class="{SITUACAO_CLASSE}">{SITUACAO}</span></td>        
         <td>
           <!-- BEGIN BLOCK_CONSUMO -->
-            <a class="btn" href="atendimentos_consumo.php?codigo={CODIGO}" title="Consumo"><i class=" icon-th-list"></i> Consumo</a>
+            <a class="btn btn-inverse" href="atendimentos_consumo.php?codigo={CODIGO}" title="Consumo"><i class=" icon-th-list icon-white"></i> Consumo</a>
           <!-- END BLOCK_CONSUMO -->     
           <!-- BEGIN BLOCK_CONSUMO_DESABILITADO -->
             <a class="btn disabled" href="#" title="{CONSUMO_DESCRICAO}"><i class="icon-th-list"></i> Consumo</a>
@@ -38,7 +53,7 @@
         </td>                        
         <td>
           <!-- BEGIN BLOCK_CREDITOS -->
-            <a class="btn btn-success" href="atendimentos_creditos.php?codigo={CODIGO}" title="Créditos">
+            <a class="btn btn-warning" href="atendimentos_creditos.php?codigo={CODIGO}" title="Créditos">
               <span><strong>$</strong> Créditos</span>
             </a>
           <!-- END BLOCK_CREDITOS -->     
@@ -48,7 +63,7 @@
         </td>
         <td>
           <!-- BEGIN BLOCK_FINALIZAR -->
-            <a class="btn btn-danger" href="atendimentos_finalizar.php?codigo={CODIGO}" title="Finalizar Atendimento"><i class="icon-chevron-right icon-white"></i> Finalizar</a>
+            <a class="btn btn-success" href="atendimentos_finalizar.php?codigo={CODIGO}" title="Finalizar Atendimento"><i class="icon-chevron-right icon-white"></i> Finalizar</a>
           <!-- END BLOCK_FINALIZAR -->     
           <!-- BEGIN BLOCK_FINALIZAR_DESABILITADO -->
             <a class="btn disabled" href="#" title="{FINALIZAR_DESCRICAO}"><i class="icon-chevron-right "></i> Finalizar</a>
