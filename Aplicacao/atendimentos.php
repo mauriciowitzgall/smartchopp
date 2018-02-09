@@ -118,7 +118,7 @@ while ($dados=mysql_fetch_assoc($query)) {
 	$totconsumido=$dados3["valtot"];
 
 	$saldo=$totcreditos-$totconsumido;
-	$tpl->SALDO="R$ ".number_format($saldo,2);
+	$tpl->SALDO="R$ ".number_format($saldo,2,",","");
 
 	//Itens
 	$sql4="SELECT count(item) as itens FROM atendimentos_itens WHERE atendimento=$codigo";

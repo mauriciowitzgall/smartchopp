@@ -5,7 +5,7 @@ include "global.php";
 $menuselecionado="chopeiras";
 include "menu.php";
 
-print_r($_POST);
+//print_r($_POST);
 
 $codigo=$_GET["codigo"];
 $nome=$_POST["nome"];

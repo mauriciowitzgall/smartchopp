@@ -11,11 +11,9 @@ $atendimento=$_GET["codigo"];
 $tpl = new Template("atendimentos_consumo.html");
 $tpl->ATENDIMENTO="$atendimento";
 $sql="
-	SELECT at.item as item, at.valor_unitario as valuni, at.valor_total as valtot, csm.nome as consumidor, chope, chopeira, quantidade, a.modalidade as modalidade
-	FROM atendimentos a
-	LEFT JOIN atendimentos_itens at on (a.codigo=at.atendimento)	
-	LEFT JOIN consumidores csm ON (a.consumidor=csm.codigo)	
-	WHERE a.codigo=$atendimento
+	SELECT at.item as item, at.valor_unitario as valuni, at.valor_total as valtot, chope, chopeira, quantidade
+	FROM atendimentos_itens at 
+	WHERE at.atendimento=$atendimento
 	$filtro_paginacao	
 	ORDER BY at.item desc
 ";
@@ -44,9 +42,15 @@ $filtro_paginacao="LIMIT $paginacao_qtdporpagina OFFSET $paginacao_inicio";
 $sql=$sql.$filtro_paginacao;
 
 
-if (!$query0=mysql_query($sql)) die("Erro SQL 2: ".mysql_error());
 
 //DADOS DE CABEÇALHO
+$sql0="
+	SELECT csm.nome as consumidor, a.modalidade as modalidade
+	FROM atendimentos a	
+	LEFT JOIN consumidores csm ON (a.consumidor=csm.codigo)	
+	WHERE a.codigo=$atendimento		
+";
+if (!$query0=mysql_query($sql0)) die("Erro SQL 2: ".mysql_error());
 $dados0=mysql_fetch_assoc($query0);
 
 //Consumidor
@@ -88,6 +92,7 @@ if ($situacao==0) $tpl->SITUACAO="Encerrado";
 else  $tpl->SITUACAO="Em andamento";
 
 //Lista de itens
+if (!$query=mysql_query($sql)) die("Erro SQL: ".mysql_error());
 while ($dados=mysql_fetch_assoc($query)) {
 	$tpl->ITEM=$dados["item"];
 	$tpl->CHOPE=$dados["chope"];

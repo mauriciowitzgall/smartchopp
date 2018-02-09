@@ -11,8 +11,8 @@
     <div class="control-group">
       <label class="control-label "><strong>Chope *</strong></label>
       <div class="controls">
-        <select name="chope">
-          <option> Selecione </option>
+        <select name="chope" required>
+          <option value="">Selecione </option>
           <!-- BEGIN BLOCK_OPTION_CHOPE -->
           <option {OPTION_CHOPE_SELECIONADO} value="{OPTION_CHOPE_VALOR}"> {OPTION_CHOPE_NOME} </option>
           <!-- END BLOCK_OPTION_CHOPE -->
@@ -22,8 +22,8 @@
     <div class="control-group">
       <label class="control-label "><strong>Equipamento *</strong></label>
       <div class="controls">
-        <select name="equipamento">
-          <option> Selecione </option>
+        <select name="equipamento" required>
+          <option value="">Selecione</option>
           <!-- BEGIN BLOCK_OPTION_EQUIPAMENTO -->
           <option {OPTION_EQUIPAMENTO_SELECIONADO} value="{OPTION_EQUIPAMENTO_VALOR}"> {OPTION_EQUIPAMENTO_NOME} </option>
           <!-- END BLOCK_OPTION_EQUIPAMENTO -->
@@ -33,13 +33,13 @@
     <div class="control-group">
       <label class="control-label "><strong>Capacidade *</strong></label>
       <div class="controls">
-        <input class="input-medium" type="text"  id="capacidade" placeholder="0,000" name="capacidade" value="{CAPACIDADE}" onkeyup="" ><span class="help-inline"></span>
+        <input class="input-medium" type="text"  id="capacidade" placeholder="0,000" name="capacidade" value="{CAPACIDADE}" onkeyup="" required><span class="help-inline"></span>
       </div>
     </div>  
     <div class="control-group">
       <label class="control-label "><strong>Quantidade Atual *</strong></label>
       <div class="controls">
-        <input class="input-medium" type="text"  id="quantidade" placeholder="0,000" name="quantidade" value="{QUANTIDADE}" onkeyup="" ><span class="help-inline"></span>
+        <input class="input-medium" type="text"  id="quantidade" placeholder="0,000" name="quantidade" value="{QUANTIDADE}" onkeyup="" required><span class="help-inline"></span>
       </div>
     </div>         
     <div class="control-group">

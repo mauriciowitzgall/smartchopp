@@ -1,0 +1,54 @@
+<script src="atendimentos_cadastrar.js"></script>
+
+<div class="container">
+  <form class="form-horizontal" action="atendimentos_cadastrar_salvar.php?operacao={OPERACAO}&codigo={CODIGO}" method="POST" name="form1">
+    <div class="control-group">
+      <label class="control-label"><strong>Cartão *</strong></label>
+      <div class="controls">
+        <input class="input-medium" type="text" placeholder="" name="rfid" id="rfid" value="{RFID}" required>
+      </div>
+    </div> 
+    <div class="control-group">
+      <label class="control-label">Telefone</label>
+      <div class="controls">
+        <input class="input-medium" type="text" placeholder="" name="telefone" id="telefone" maxlength="15" value="{TELEFONE}" onblur="verifica_consumidor(this.value)">
+      </div>
+    </div>    
+    <div class="control-group">
+      <label class="control-label">Consumidor</label>
+      <div class="controls">
+        <input type="hidden" name="consumidor_id" id="consumidor_id" value="{CONSUMIDOR_ID}">
+        <input class="input-xlarge" type="text" placeholder="" name="consumidor" id="consumidor" value="{CONSUMIDOR}">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label "><strong>Modalidade *</strong></label>
+      <div class="controls">
+        <select name="modalidade" class="input-medium" required>
+          <option value=""> Selecione</option>
+          <!-- BEGIN BLOCK_OPTION_MODALIDADE -->
+          <option {OPTION_MODALIDADE_SELECIONADO} value="{OPTION_MODALIDADE_VALOR}"> {OPTION_MODALIDADE_NOME} </option>
+          <!-- END BLOCK_OPTION_MODALIDADE -->
+        </select>      
+      </div> 
+    </div>
+    <div class="control-group">
+      <label class="control-label"><strong>Crédito Inicial *</strong></label>
+      <div class="controls">
+        <input class="input-medium" type="text" placeholder="R$ 0,00" name="creditoinicial" id="creditoinicial" value="{CREDITOINICIAL}" required>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </form>
+</div>
+<table class="form-horizontal" border="0" width="" align="left">
+  <tr align="">
+    <td width="20px"></td>  
+    <td align="left" width="100px">      
+      <a class="btn btn-inverse" href="atendimentos.php" title="Voltar"><i class="icon-chevron-left icon-white"></i> Voltar</a>
+    </td>    
+</table>

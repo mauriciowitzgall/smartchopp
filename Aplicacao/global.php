@@ -11,5 +11,6 @@ $sql="SELECT * from configuracoes WHERE codigo=1";
 if (!$query=mysql_query($sql)) die("Erro SQL CONFIGURACOES: ".mysql_error());
 $dados=mysql_fetch_assoc($query);
 $paginacao_qtdporpagina=$dados["paginacao"];
+$modalidade_padrao=$dados["modalidade"];
 
 ?>
