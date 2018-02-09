@@ -1,5 +1,5 @@
 
-<table class="form-horizontal" border="0" width="" align="left">
+<table class="form-horizontal" border="0" width="100%" align="left">
   <tr align="">
     <td width="20px"></td>  
     <td align="left" width="100px">
@@ -9,23 +9,30 @@
     <td width="20px"></td>  
     <td align="left" width="200px">
       <label class=""><strong>Consumidor</strong></label>
-      <input class="input-large" type="text" value="{CONSUMIDOR}" disabled="" align="center">
+      <input class="input-xlarge" type="text" value="{CONSUMIDOR}" disabled="" align="center">
     </td>
     <td width="20px"></td>  
     <td align="left" width="100px">
       <label class=""><strong>Saldo</strong></label>
-      <input class="input-small" type="text" value="{SALDO}" disabled="" align="center">
+      <input class="input-medium" type="text" value="{SALDO}" disabled="" align="center">
     </td>  
-    <td width="20px"></td>  
-    <td align="left" width="100px">
-      <label class=""><strong>Modalidade</strong></label>
-      <input class="input-small" type="text" value="{MODALIDADE}" disabled="" align="center">
-    </td>
     <td width="20px"></td>  
     <td align="left" width="100px">
       <label class=""><strong>Situação</strong></label>
       <input class="input-medium " type="text" value="{SITUACAO}" disabled="" align="center">
-    </td>        
+    </td>   
+    <td width="20px"></td>   
+    <td align="right">
+      <label class="">&nbsp</label>
+       <!-- BEGIN BLOCK_BOTAO_INCLUIR -->
+       <a class="btn btn-primary" href="atendimentos_creditos_cadastrar.php?operacao=1&atendimento={ATENDIMENTO}" title="Cadastrar"><i class="icon-plus  icon-white"></i> Inserir crédito</a>
+       <!-- END BLOCK_BOTAO_INCLUIR -->
+       
+       <!-- BEGIN BLOCK_BOTAO_INCLUIR_DESABILITADO -->
+       <a class="btn " href="#" title="{BOTAO_INCLUIR_DESCRICAO}" disabled><i class="icon-plus"></i> Inserir crédito</a>
+       <!-- END BLOCK_BOTAO_INCLUIR_DESABILITADO -->       
+    </td>  
+    <td width="20px"></td>     
   </tr>
   <tr>
     <td><br></td>  
@@ -38,22 +45,27 @@
     <thead class="thead-inverse">
       <tr>
         <th>#</th>
-        <th>Chopeira</th>
-        <th>Chope</th>        
-        <th>Valor Unitário</th>                
-        <th>Quantidade (litro)</th>        
-        <th>Valor total</th>                
+        <th>Data</th>
+        <th>Horário</th>
+        <th>Valor</th>
+        <th width="5%" colspan="2">Operações</th>
       </tr>
     </thead>
     <tbody>
       <!-- BEGIN BLOCK_LINHA -->
       <tr>
         <th scope="row">{ITEM}</th>
-        <td>{CHOPEIRA}</td>                
-        <td>{CHOPE}</td>
-        <td>{VALUNI}</td>
-        <td>{QTD}</td>
-        <td>{VALTOT}</td>                
+        <td>{DATA}</td>                
+        <td>{HORA}</td>                
+        <td>{VALOR}</td>                   
+        <td>     
+          <!-- BEGIN BLOCK_DELETAR -->       
+          <a class="btn btn-danger" href="atendimentos_creditos_deletar.php?operacao=2&atendimento={ATENDIMENTO}&item={ITEM}" title="Remover"><i class="icon-trash  icon-white"></i></a>
+          <!-- END BLOCK_DELETAR -->       
+          <!-- BEGIN BLOCK_DELETAR_DESABILITADO -->
+            <a class="btn disabled" href="#" title="{DELETAR_DESCRICAO}" ><i class="icon-trash"></i></a>
+          <!-- END BLOCK_DELETAR_DESABILITADO -->              
+        </td>        
       </tr>
       <!-- END BLOCK_LINHA -->
     </tbody>

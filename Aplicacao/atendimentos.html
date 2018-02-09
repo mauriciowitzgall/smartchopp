@@ -3,7 +3,7 @@
     <input type="text" class="input-xlarge search-query" name="busca" value="{BUSCA}">
     <input type="hidden" class="" name="novabusca" value="1">
     <button type="submit" class="btn"><i class="icon-search icon-black"></i></button>
-    <a href="atendimentos_cadastrar.php?operacao=1"><button class="btn btn-primary" type="button">Cadastrar</button></a>
+    <a href="atendimentos_cadastrar.php?operacao=1"><button class="btn btn-primary" type="button">Novo atendimento</button></a>
   </form>
 </div>
 <div class="" style="border:20px solid #ffffff">
@@ -15,41 +15,43 @@
         <th>Modalidade</th>        
         <th>Saldo</th>                
         <th>Itens</th>                
-        <th width="10%" colspan="5">Operações</th>
+        <th>Situação</th>                
+        <th width="25%" colspan="5">Operações</th>
       </tr>
     </thead>
     <tbody>
       <!-- BEGIN BLOCK_LINHA -->
-      <tr>
+      <tr class="{LINHA_CLASSE}">
         <th scope="row">{CODIGO}</th>
         <td>{CONSUMIDOR}</td>                
         <td><span class="{MODALIDADE_CLASSE}">{MODALIDADE}</span></td>
         <td>{SALDO}</td>        
         <td>{ITENS}</td>        
+        <td><span class="{SITUACAO_CLASSE}">{SITUACAO}</span></td>        
         <td>
           <!-- BEGIN BLOCK_CONSUMO -->
-            <a class="btn" href="atendimentos_consumo.php?codigo={CODIGO}" title="Consumo"><i class=" icon-th-list"></i></a>
+            <a class="btn" href="atendimentos_consumo.php?codigo={CODIGO}" title="Consumo"><i class=" icon-th-list"></i> Consumo</a>
           <!-- END BLOCK_CONSUMO -->     
           <!-- BEGIN BLOCK_CONSUMO_DESABILITADO -->
-            <a class="btn disabled" href="#" title="{CONSUMO_DESCRICAO}"><i class="icon-th-list"></i></a>
+            <a class="btn disabled" href="#" title="{CONSUMO_DESCRICAO}"><i class="icon-th-list"></i> Consumo</a>
           <!-- END BLOCK_CONSUMO_DESABILITADO -->                  
         </td>                        
         <td>
           <!-- BEGIN BLOCK_CREDITOS -->
             <a class="btn btn-success" href="atendimentos_creditos.php?codigo={CODIGO}" title="Créditos">
-              <span><strong>$</strong></span>
+              <span><strong>$</strong> Créditos</span>
             </a>
           <!-- END BLOCK_CREDITOS -->     
           <!-- BEGIN BLOCK_CREDITOS_DESABILITADO -->
-            <a class="btn disabled" href="#" title="{CREDITO_DESCRICAO}"><span><strong>$</strong></span></a>
+            <a class="btn disabled" href="#" title="{CREDITO_DESCRICAO}"><span><strong>$</strong> Créditos</span></a>
           <!-- END BLOCK_CREDITOS_DESABILITADO -->                  
         </td>
         <td>
           <!-- BEGIN BLOCK_FINALIZAR -->
-            <a class="btn btn-danger" href="atendimentos_finalizar.php?codigo={CODIGO}" title="Finalizar Atendimento"><i class="icon-chevron-right icon-white"></i></a>
+            <a class="btn btn-danger" href="atendimentos_finalizar.php?codigo={CODIGO}" title="Finalizar Atendimento"><i class="icon-chevron-right icon-white"></i> Finalizar</a>
           <!-- END BLOCK_FINALIZAR -->     
           <!-- BEGIN BLOCK_FINALIZAR_DESABILITADO -->
-            <a class="btn disabled" href="#" title="{FINALIZAR_DESCRICAO}"><i class="icon-chevron-down"></i></a>
+            <a class="btn disabled" href="#" title="{FINALIZAR_DESCRICAO}"><i class="icon-chevron-right "></i> Finalizar</a>
           <!-- END BLOCK_FINALIZAR_DESABILITADO -->                  
         </td>
       </tr>

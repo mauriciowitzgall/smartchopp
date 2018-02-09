@@ -1,0 +1,54 @@
+<script src="atendimentos_creditos_cadastrar.js"></script>
+
+<div class="container">
+  <form class="form-horizontal" action="atendimentos_creditos_cadastrar_salvar.php?operacao={OPERACAO}&atendimento={ATENDIMENTO}&item={ITEM}" method="POST">
+    <div class="control-group">
+      <label class="control-label"><span class="">Atendimento</span></label>
+      <div class="controls">
+        <input class="input-small" type="text" value="{ATENDIMENTO}" disabled="" align="center">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label"><span class="">Consumidor</span></label>
+      <div class="controls">
+        <input class="input-xlarge" type="text" value="{CONSUMIDOR}" disabled="" align="center">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label"><span class="text-info">Total Créditos</span></label>
+      <div class="controls">
+        <input class="input-medium" type="text" placeholder="" disabled value="{TOTCREDITOS}">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label"><span class="text-error">Total Consumido</span></label>
+      <div class="controls">
+        <input class="input-medium" type="text" placeholder="" disabled value="{TOTCONSUMIDO}">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Saldo</label>
+      <div class="controls">
+        <input class="input-medium" type="text" placeholder="" disabled value="{SALDO}">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label"><strong>Novo Crédito *</strong></label>
+      <div class="controls">
+        <input class="input-medium" type="text" placeholder="R$ 0,00" name="novocredito" id="novocredito" value="{NOVOCREDITO}" required="">
+      </div>
+    </div>            
+    <div class="control-group">
+      <div class="controls">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </form>
+</div>
+<table class="form-horizontal" border="0" width="" align="left">
+  <tr align="">
+    <td width="20px"></td>  
+    <td align="left" width="100px">      
+      <a class="btn btn-inverse" href="atendimentos_creditos.php?codigo={ATENDIMENTO}&item={ITEM}" title="Voltar"><i class="icon-chevron-left icon-white"></i> Voltar</a>
+    </td>    
+</table>

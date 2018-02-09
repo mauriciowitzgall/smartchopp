@@ -8,16 +8,16 @@ $atendimento=$_GET["codigo"];
 
 //print_r($_REQUEST);
 
-$tpl = new Template("atendimentos_consumo.html");
+$tpl = new Template("atendimentos_creditos.html");
 $tpl->ATENDIMENTO="$atendimento";
 $sql="
-	SELECT at.item as item, at.valor_unitario as valuni, at.valor_total as valtot, csm.nome as consumidor, chope, chopeira, quantidade, a.modalidade as modalidade
+	SELECT csm.nome as consumidor, a.modalidade as modalidade, ac.datahora as datahora, ac.valor as valor, ac.item as item, a.situacao as situacao
 	FROM atendimentos a
-	LEFT JOIN atendimentos_itens at on (a.codigo=at.atendimento)	
+	LEFT JOIN atendimentos_creditos ac on (a.codigo=ac.atendimento)	
 	LEFT JOIN consumidores csm ON (a.consumidor=csm.codigo)	
 	WHERE a.codigo=$atendimento
 	$filtro_paginacao	
-	ORDER BY at.item desc
+	ORDER BY ac.item desc
 ";
 
 //Paginação
@@ -32,19 +32,19 @@ if ($paginacao_inicio==0) {
 	$tpl->PAGINACAO_ANTERIOR_CLASSE="disabled";
 	$tpl->PAGINACAO_ANTERIOR_LINK="#";
 } else {
-	$tpl->PAGINACAO_ANTERIOR_LINK="atendimentos_consumo.php?codigo=$atendimento&paginacao_inicio=$paginacao_anterior_inicio";
+	$tpl->PAGINACAO_ANTERIOR_LINK="atendimentos_creditos.php?codigo=$atendimento&paginacao_inicio=$paginacao_anterior_inicio";
 }
 if ($paginacao_proxima_inicio>=$paginacao_qtditens) {
 	$tpl->PAGINACAO_PROXIMA_LINK="#";
 	$tpl->PAGINACAO_PROXIMA_CLASSE="disabled";
 } else {
-	$tpl->PAGINACAO_PROXIMA_LINK="atendimentos_consumo.php?codigo=$atendimento&paginacao_inicio=$paginacao_proxima_inicio";
+	$tpl->PAGINACAO_PROXIMA_LINK="atendimentos_creditos.php?codigo=$atendimento&paginacao_inicio=$paginacao_proxima_inicio";
 }
 $filtro_paginacao="LIMIT $paginacao_qtdporpagina OFFSET $paginacao_inicio";
 $sql=$sql.$filtro_paginacao;
 
 
-if (!$query0=mysql_query($sql)) die("Erro SQL 2: ".mysql_error());
+if (!$query0=mysql_query($sql)) die("Erro SQL 0: ".mysql_error());
 
 //DADOS DE CABEÇALHO
 $dados0=mysql_fetch_assoc($query0);
@@ -52,13 +52,7 @@ $dados0=mysql_fetch_assoc($query0);
 //Consumidor
 $tpl->CONSUMIDOR=$dados0["consumidor"];
 
-//Modalidade
-$modalidade=$dados0["modalidade"];
-if ($modalidade==1) {
-	$tpl->MODALIDADE="Pré-pago";
-} else if ($dados0["modalidade"]==2) {
-	$tpl->MODALIDADE="Pós-pago";
-} 
+
 //Saldo
 //Verifica qual é o total de crédito efetuados
 $sql2="
@@ -80,21 +74,47 @@ if (!$query3=mysql_query($sql3)) die("Erro SQL 3: ".mysql_error());
 $dados3=mysql_fetch_assoc($query3);
 $totconsumido=$dados3["valtot"];
 $saldo=$totcreditos-$totconsumido;
-$tpl->SALDO="R$ ".number_format($saldo,2);
+$tpl->SALDO="R$ ".number_format($saldo,2,",","");
 
 //Situação
 $situacao=$dados0["situacao"];
 if ($situacao==0) $tpl->SITUACAO="Encerrado";
 else  $tpl->SITUACAO="Em andamento";
 
+//Botão Incluir Crédito
+if ($situacao==0) {
+	$tpl->BOTAO_INCLUIR_DESCRICAO="Não é possível incluir créditos em atendimentos encerrados!";
+	$tpl->block("BLOCK_BOTAO_INCLUIR_DESABILITADO");
+} else if ($situacao==1) {
+	$tpl->block("BLOCK_BOTAO_INCLUIR");
+}
+
+
+
 //Lista de itens
 while ($dados=mysql_fetch_assoc($query)) {
+
 	$tpl->ITEM=$dados["item"];
-	$tpl->CHOPE=$dados["chope"];
-	$tpl->CHOPEIRA=$dados["chopeira"];
-	$tpl->VALUNI="R$ ".number_format($dados["valuni"],2,",","");
-	$tpl->QTD=number_format($dados["quantidade"],3,",","")."";
-	$tpl->VALTOT="R$ ". number_format($dados["valtot"],2,",","");
+	$situacao=$dados["situacao"];
+	$datahora=$dados["datahora"];
+	$tpl->DATA=converte_datahora2($datahora);
+	$tpl->HORA=converte_datahora3($datahora);
+	$valor=$dados["valor"];
+	$tpl->VALOR="R$ ". number_format($dados["valor"],2,",","");
+
+	//Verifica se ao remover o saldo ficará negativo, se sim não permite remover
+	$saldo_novo=$saldo-$valor;
+	if ($saldo_novo<0) {
+		$tpl->DELETAR_DESCRICAO="Não é possível excluir este crédito porque o saldo ficaria NEGATIVO!";
+		$tpl->block("BLOCK_DELETAR_DESABILITADO");
+	} else if ($situacao==0) {
+		$tpl->DELETAR_DESCRICAO="Não é possível excluir este crédito porque o atendimento está encerrado";
+		$tpl->block("BLOCK_DELETAR_DESABILITADO");
+	} else {
+		$tpl->block("BLOCK_DELETAR");
+	}
+
+
 	$tpl->block("BLOCK_LINHA");
 }
 

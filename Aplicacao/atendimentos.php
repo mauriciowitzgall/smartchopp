@@ -28,7 +28,7 @@ if ($busca!="") {
 $tpl->BUSCA=$busca;
 
 $sql="
-	SELECT a.codigo as codigo, csm.nome as consumidor, a.modalidade as modalidade
+	SELECT a.codigo as codigo, csm.nome as consumidor, a.modalidade as modalidade, a.situacao as situacao
 	FROM atendimentos a
 	LEFT JOIN atendimentos_itens at on (a.codigo=at.atendimento)
 	LEFT JOIN chopeiras cpr ON (at.chopeira_codigo=cpr.codigo)	
@@ -36,13 +36,11 @@ $sql="
 	LEFT JOIN chopes cho ON (at.chope_codigo=cho.codigo)	
 	LEFT JOIN cartoes car ON (a.cartao=car.codigo)	
 	LEFT JOIN consumidores csm ON (a.consumidor=csm.codigo)	
-
-	
 	WHERE 1 
 	$sql_filtro
 	$filtro_paginacao
 	GROUP BY a.codigo
-	ORDER BY a.codigo desc
+	ORDER BY a.situacao desc,a.codigo desc
 ";
 
 //Paginação
@@ -71,8 +69,16 @@ $sql=$sql.$filtro_paginacao;
 if (!$query=mysql_query($sql)) die("Erro SQL 2: ".mysql_error());
 while ($dados=mysql_fetch_assoc($query)) {
 	$codigo=$dados["codigo"];
+	$situacao=$dados["situacao"];
 	$tpl->CODIGO=$dados["codigo"];
-	
+
+	//Cor da linha
+	if ($situacao==0) {
+		//$tpl->LINHA_CLASSE="error";
+	} else if ($situacao==1) {
+		//$tpl->LINHA_CLASSE="";
+	} 
+
 	//Consumidor
 	$tpl->CONSUMIDOR=$dados["consumidor"];
 	
@@ -121,6 +127,16 @@ while ($dados=mysql_fetch_assoc($query)) {
 	$itens=$dados4["itens"];
 	$tpl->ITENS="$itens";
 
+	//Situção
+	if ($situacao==0) {
+		$tpl->SITUACAO="Encerrado";
+		$tpl->SITUACAO_CLASSE="text-error";
+	} else if ($situacao==1) {
+		$tpl->SITUACAO="Em andamento";
+		$tpl->SITUACAO_CLASSE="text-success";
+	} else {
+		$tpl->SITUACAO_CLASSE="";
+	}	
 
 	//Icone créditos
 	if ($modalidade==1) $tpl->block("BLOCK_CREDITOS");
@@ -133,7 +149,8 @@ while ($dados=mysql_fetch_assoc($query)) {
 	$tpl->block("BLOCK_CONSUMO");
 	
 	//Icone Finalizar
-	$tpl->block("BLOCK_FINALIZAR");
+	if ($situacao==0) $tpl->block("BLOCK_FINALIZAR_DESABILITADO");
+	else $tpl->block("BLOCK_FINALIZAR");
 
 	$tpl->block("BLOCK_LINHA");
 }
