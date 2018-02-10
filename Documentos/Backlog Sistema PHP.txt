@@ -7,6 +7,4 @@
 - não permitir 2 atendimentos ativos com o mesmo cartao
 - inserrir coluna data na listagem de atendimentos
 - data e hora na listagem de consumo
-- na lista de consumo o atendimento 1 aparece como encerrado no cabecalho
-- na listagem de atendimento trocar itens por servidas
 - quando for realizar novo atendimento verificar se tem saldo pendente anterior e mostrar na tela o saldo anterior para que ela possa usar, sugerir se quer crédito novo.

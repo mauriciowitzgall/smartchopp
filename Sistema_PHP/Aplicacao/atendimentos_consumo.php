@@ -45,7 +45,7 @@ $sql=$sql.$filtro_paginacao;
 
 //DADOS DE CABEÇALHO
 $sql0="
-	SELECT csm.nome as consumidor, a.modalidade as modalidade
+	SELECT csm.nome as consumidor, a.modalidade as modalidade, a.situacao as situacao
 	FROM atendimentos a	
 	LEFT JOIN consumidores csm ON (a.consumidor=csm.codigo)	
 	WHERE a.codigo=$atendimento		
