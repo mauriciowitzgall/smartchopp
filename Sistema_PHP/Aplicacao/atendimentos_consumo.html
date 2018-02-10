@@ -1,40 +1,52 @@
+<form class="form-inline">
+    <table class="" align="right" width="100%" border="0">
+      <tr>
+        <td>
+          <label class="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>   
+          <label class="">
+            <strong>Atendimento</strong><br>
+            <input class="input-small" type="text" value="{ATENDIMENTO}" disabled="" align="center">
+          </label>
+          <label class="">&nbsp;&nbsp;&nbsp;&nbsp;</label>   
+          <label class="">
+            <strong>Consumidor</strong><br>
+            <input class="input-xlarge" type="text" value="{CONSUMIDOR}" disabled="" align="center">
+          </label> 
+          <label class="">&nbsp;&nbsp;&nbsp;&nbsp;</label>   
+          <label class="">
+            <strong>Saldo</strong><br>
+            <input class="input-medium" type="text" value="{SALDO}" disabled="" align="center">      
+          </label> 
+          <label class="">&nbsp;&nbsp;&nbsp;&nbsp;</label>   
+          <label class="">
+            <strong>Modalidade</strong><br>
+            <input class="input-small" type="text" value="{MODALIDADE}" disabled="" align="center">      
+          </label>            
+          <label class="">&nbsp;&nbsp;&nbsp;&nbsp;</label>   
+          <label class="">
+            <strong>Situação</strong><br>
+            <input class="input-medium " type="text" value="{SITUACAO}" disabled="" align="center">
+          </label> 
 
-<table class="form-horizontal" border="0" width="" align="left">
-  <tr align="">
-    <td width="20px"></td>  
-    <td align="left" width="100px">
-      <label class=""><strong>Atendimento</strong></label>
-      <input class="input-small" type="text" value="{ATENDIMENTO}" disabled="" align="center">
-    </td>
-    <td width="20px"></td>  
-    <td align="left" width="200px">
-      <label class=""><strong>Consumidor</strong></label>
-      <input class="input-large" type="text" value="{CONSUMIDOR}" disabled="" align="center">
-    </td>
-    <td width="20px"></td>  
-    <td align="left" width="100px">
-      <label class=""><strong>Saldo</strong></label>
-      <input class="input-small" type="text" value="{SALDO}" disabled="" align="center">
-    </td>  
-    <td width="20px"></td>  
-    <td align="left" width="100px">
-      <label class=""><strong>Modalidade</strong></label>
-      <input class="input-small" type="text" value="{MODALIDADE}" disabled="" align="center">
-    </td>
-    <td width="20px"></td>  
-    <td align="left" width="100px">
-      <label class=""><strong>Situação</strong></label>
-      <input class="input-medium " type="text" value="{SITUACAO}" disabled="" align="center">
-    </td>        
-  </tr>
-  <tr>
-    <td><br></td>  
-  </tr>
-</table>
+        </td>
+        <td>
+          &nbsp;<br>
+           <!-- BEGIN BLOCK_BOTAO_INCLUIR -->
+           <a class="btn btn-primary" href="atendimentos_creditos_cadastrar.php?operacao=1&atendimento={ATENDIMENTO}" title="Cadastrar"><i class="icon-plus  icon-white"></i> Inserir crédito</a>
+           <!-- END BLOCK_BOTAO_INCLUIR -->
+           
+           <!-- BEGIN BLOCK_BOTAO_INCLUIR_DESABILITADO -->
+           <a class="btn " href="#" title="{BOTAO_INCLUIR_DESCRICAO}" disabled><i class="icon-plus"></i> Inserir crédito</a>
+           <!-- END BLOCK_BOTAO_INCLUIR_DESABILITADO -->   
+        </td>
+      </tr>
+     </table>       
+  
+</form>
 
 
 <div class="" style="border:20px solid #ffffff">
-  <table class="table table-hover table table-condensed"> 
+  <table class="table table-hover table table-condensed" border="0"> 
     <thead class="thead-inverse">
       <tr>
         <th>#</th>
@@ -56,6 +68,11 @@
         <td>{VALTOT}</td>                
       </tr>
       <!-- END BLOCK_LINHA -->
+      <!-- BEGIN BLOCK_LINHA_NADA -->
+      <tr class="error">
+        <td class="" colspan="10"><p class="text-center">Nenhum Registro!</p></td>        
+      </tr>
+      <!-- END BLOCK_LINHA_NADA -->      
     </tbody>
   </table>
   <ul class="pager">

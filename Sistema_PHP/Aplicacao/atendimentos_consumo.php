@@ -102,6 +102,8 @@ while ($dados=mysql_fetch_assoc($query)) {
 	$tpl->VALTOT="R$ ". number_format($dados["valtot"],2,",","");
 	$tpl->block("BLOCK_LINHA");
 }
+$linhas=mysql_num_rows($query);
+if ($linhas==0) $tpl->block("BLOCK_LINHA_NADA");
 
 $tpl->show();
 

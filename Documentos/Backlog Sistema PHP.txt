@@ -1,7 +1,12 @@
-- tela finalizar atendimento
 - quando não tem nenhum registro nas listagens mostrar uma tupla vermelha
 - inserir um titulo nas telas de listagem de creditos e consumo, e sub telas (cadastro, salvar, deletar)
 - o arquivo server que insere o item de consumo deve retirar da choperia a quantidade para a barrinha funcionar
 - avaliar como vamos tratar quando o chope termina, o sistema pode ajudar a ASP, mandando resposta que o chope acabou, e a ASP pode bloquear a torneira, eviando que o cliente tire só espuma de final de barril.
 - inserir o botao excluir na listagem de consumo
 - inserir botao para incluir consumo manual
+- não permitir 2 atendimentos ativos com o mesmo cartao
+- inserrir coluna data na listagem de atendimentos
+- data e hora na listagem de consumo
+- na lista de consumo o atendimento 1 aparece como encerrado no cabecalho
+- na listagem de atendimento trocar itens por servidas
+- quando for realizar novo atendimento verificar se tem saldo pendente anterior e mostrar na tela o saldo anterior para que ela possa usar, sugerir se quer crédito novo.

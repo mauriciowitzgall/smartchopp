@@ -8,9 +8,12 @@ error_reporting(E_ERROR | E_PARSE);
 $rfid=$_GET["rfid"];
 $equipamento=$_GET["equip"];
 
+
+
+
 //Verifica se foi recebido todos os campos do get
 if (($rfid=="")||($equipamento=="")) {
-	echo "0";
+	echo "-1";
 	//echo "ERRO: Você esqueceu de enviar algum parametro por GET!";
 	exit;	
 }
@@ -28,12 +31,12 @@ if (!$query=mysql_query($sql)) die("Erro SQL 1: ".mysql_error());
 $linhas=mysql_num_rows($query);
 if ($linhas>1) {
 	//echo "ERRO: Há mais de um atendimento ativo com este cartão!";
-	echo "0";
+	echo "-2";
 	exit;
 }
 if ($linhas==0) {
-	//echo "ERRO: Há um atendimento ativo com este mesmo cartão!";
-	echo "0";
+	//echo "ERRO: Não há atendimentos ativo com este mesmo cartão!";
+	echo "-3";
 	exit;
 }
 $dados=mysql_fetch_assoc($query);
@@ -84,12 +87,18 @@ $totconsumido=$dados["valtot"];
 $saldo=$totcreditos-$totconsumido;
 //print_r("<br> Saldo: ".number_format($saldo,2));
 
-//asdf
+if ($saldo<=0) {
+	//echo "ERRO: Saldo insuficiente
+	echo "-4";
+	exit;		
+}
+
+
 $qtdmaxima=$saldo/$valuni;
 //print_r("<br> Quantidade máxima: ".number_format($qtdmaxima,3));
 $qtdmaxima=number_format($qtdmaxima,3);
 $valuni=number_format($valuni,2);
 
-echo "1|$qtdmaxima|$valuni";
+echo "1|$valuni|$qtdmaxima";
 
 ?>
