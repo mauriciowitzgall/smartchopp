@@ -45,6 +45,10 @@ if ($operacao==1) {
 	exit;
 }
 
+$sql="UPDATE chopeiras SET quantidade=quantidade-$qtd WHERE codigo=$chopeira";
+if (!$query=mysql_query($sql)) die("Erro de SQL ao atualizar quantidade da chopeira! ".mysql_error());
+
+
 header("Location:"."atendimentos_consumo.php?codigo=$atendimento");
 die();
 

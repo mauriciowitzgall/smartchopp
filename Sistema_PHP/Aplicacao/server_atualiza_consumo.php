@@ -38,7 +38,7 @@ $atendimento=$dados["atendimento_codigo"];
 
 //Verifica qual é o valor unitário do chope
 $sql="
-	SELECT cho.valunivenda as valuni,cho.nome as chope, cpr.nome as chopeira
+	SELECT cho.valunivenda as valuni,cho.nome as chope, cpr.nome as chopeira,cpr.codigo as chopeira_codigo
 	FROM chopeiras cpr 
 	JOIN chopes cho on (cpr.chope=cho.codigo) 
 	JOIN equipamentos eqp on (cpr.equipamento=eqp.codigo) 
@@ -49,6 +49,7 @@ if (!$query=mysql_query($sql)) die("Erro SQL 2: ".mysql_error());
 $dados=mysql_fetch_assoc($query);
 $valuni=$dados["valuni"];
 $chopeira_nome=$dados["chopeira"];
+$chopeira_codigo=$dados["chopeira_codigo"];
 $chope_nome=$dados["chope"];
 
 //Verifica qual é o total de crédito efetuados
@@ -136,6 +137,10 @@ $sql="
 	);
 ";
 if (!$query=mysql_query($sql)) die("Erro de SQL ao inserir o consumo no atendimento! ".mysql_error());
+
+$sql="UPDATE chopeiras SET quantidade=quantidade-$quantidade WHERE codigo=$chopeira_codigo";
+if (!$query=mysql_query($sql)) die("Erro de SQL ao atualizar quantidade da chopeira! ".mysql_error());
+
 echo "<br>FINALIZADO";
 
 ?>
