@@ -99,6 +99,7 @@ $qtdmaxima=$saldo/$valuni;
 $qtdmaxima=number_format($qtdmaxima,3);
 $valuni=number_format($valuni,2);
 
+$qtdmaxima=$qtdmaxima*1000;
 echo "1|$valuni|$qtdmaxima";
 
 ?>

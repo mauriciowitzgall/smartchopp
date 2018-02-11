@@ -1,0 +1,79 @@
+<script src="atendimentos_consumo_cadastrar.js"></script>
+
+<div class="container">
+  <form class="form-horizontal" action="atendimentos_consumo_cadastrar_salvar.php?operacao={OPERACAO}&atendimento={ATENDIMENTO}&item={ITEM}" method="POST">
+    <div class="control-group">
+      <label class="control-label"><span class="">Atendimento</span></label>
+      <div class="controls">
+        <input class="input-small" type="text" value="{ATENDIMENTO}" disabled="" align="center">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label"><span class="">Consumidor</span></label>
+      <div class="controls">
+        <input class="input-xlarge" type="text" value="{CONSUMIDOR}" disabled="" align="center">
+      </div>
+    </div>    
+    <div class="control-group">
+      <label class="control-label">Saldo</label>
+      <div class="controls">
+        <input class="input-medium" type="text" placeholder="" disabled value="{SALDO}">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label"><strong>Data*</strong></label>
+      <div class="controls">
+        <input class="input-medium" type="date" placeholder="" name="data" id="data" value="{DATA}" required="">
+        <input class="input-small" type="time" placeholder="" name="hora" id="hora" value="{HORA}" required="">
+      </div>
+    </div>      
+    <div class="control-group">
+      <label class="control-label"><strong>Chopeira *</strong></label>
+      <div class="controls">
+        <select name="chopeira" required onchange="atualiza_chope(this.value)">
+          <option value="">Selecione</option>
+          <!-- BEGIN BLOCK_OPTION_CHOPEIRA -->
+          <option {OPTION_CHOPEIRA_SELECIONADO} value="{OPTION_CHOPEIRA_VALOR}"> {OPTION_CHOPEIRA_NOME} </option>
+          <!-- END BLOCK_OPTION_CHOPEIRA -->
+        </select>   
+      </div>
+    </div> 
+    <div class="control-group">
+      <label class="control-label">Chope</label>
+      <div class="controls">
+        <input class="input-medium" type="text" disabled name="chope" id="chope" value="{CHOPE}" >
+        <input class="input-medium" type="hidden"  name="chope_codigo" id="chope_codigo" value="{CHOPE_CODIGO}" >
+      </div>
+    </div> 
+    <div class="control-group">
+      <label class="control-label">Valor Unitário</label>
+      <div class="controls">
+        <input class="input-medium" type="text" disabled name="valuni" id="valuni" value="{VALUNI}" >
+      </div>
+    </div>   
+    <div class="control-group">
+      <label class="control-label">Quantidade</label>
+      <div class="controls">
+        <input class="input-medium" type="text" required name="qtd" id="qtd" value="{QTD}" onkeyup="atualiza_valtot(this.value)">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Valor Total</label>
+      <div class="controls">
+        <input class="input-medium" type="text" disabled name="valtot" id="valtot" value="{VALTOT}" >
+      </div>
+    </div>                      
+    <div class="control-group">
+      <div class="controls">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </form>
+</div>
+<table class="form-horizontal" border="0" width="" align="left">
+  <tr align="">
+    <td width="20px"></td>  
+    <td align="left" width="100px">      
+      <a class="btn btn-inverse" href="atendimentos_consumo.php?codigo={ATENDIMENTO}&item={ITEM}" title="Voltar"><i class="icon-chevron-left icon-white"></i> Voltar</a>
+    </td>    
+</table>

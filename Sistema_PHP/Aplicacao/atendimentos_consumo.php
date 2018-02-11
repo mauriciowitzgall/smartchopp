@@ -8,10 +8,11 @@ $atendimento=$_GET["codigo"];
 
 //print_r($_REQUEST);
 
+
 $tpl = new Template("atendimentos_consumo.html");
 $tpl->ATENDIMENTO="$atendimento";
 $sql="
-	SELECT at.item as item, at.valor_unitario as valuni, at.valor_total as valtot, chope, chopeira, quantidade
+	SELECT at.item as item, at.valor_unitario as valuni, at.valor_total as valtot, chope, chopeira, quantidade, at.datahora as datahora
 	FROM atendimentos_itens at 
 	WHERE at.atendimento=$atendimento
 	$filtro_paginacao	
@@ -40,6 +41,7 @@ if ($paginacao_proxima_inicio>=$paginacao_qtditens) {
 }
 $filtro_paginacao="LIMIT $paginacao_qtdporpagina OFFSET $paginacao_inicio";
 $sql=$sql.$filtro_paginacao;
+
 
 
 
@@ -91,15 +93,20 @@ $situacao=$dados0["situacao"];
 if ($situacao==0) $tpl->SITUACAO="Encerrado";
 else  $tpl->SITUACAO="Em andamento";
 
+$tpl->block("BLOCK_BOTAO_INCLUIR");
+
+
 //Lista de itens
 if (!$query=mysql_query($sql)) die("Erro SQL: ".mysql_error());
 while ($dados=mysql_fetch_assoc($query)) {
 	$tpl->ITEM=$dados["item"];
+	$tpl->DATAHORA=converte_datahorabanco_para_datahoratela3($dados["datahora"]);
 	$tpl->CHOPE=$dados["chope"];
 	$tpl->CHOPEIRA=$dados["chopeira"];
 	$tpl->VALUNI="R$ ".number_format($dados["valuni"],2,",","");
 	$tpl->QTD=number_format($dados["quantidade"],3,",","")."";
 	$tpl->VALTOT="R$ ". number_format($dados["valtot"],2,",","");
+	$tpl->block("BLOCK_DELETAR");
 	$tpl->block("BLOCK_LINHA");
 }
 $linhas=mysql_num_rows($query);

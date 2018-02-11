@@ -1,5 +1,7 @@
 <?php
 
+echo "INICIADO!";
+
 include("conexao.php");
 
 //NÃO mostrar erros e warnings na tela
@@ -8,6 +10,7 @@ error_reporting(E_ERROR | E_PARSE);
 $rfid=$_GET["rfid"];
 $equipamento=$_GET["equip"];
 $quantidade=$_GET["qtd"];
+$quantidade=$quantidade/1000;
 
 //Verifica se foi recebido todos os campos do get
 if (($rfid=="")||($equipamento=="")||($quantidade=="")) {
@@ -94,11 +97,11 @@ $valtot=$valuni*$quantidade;
 //print_r("<br> Chope: $chope");
 //print_r("<br> Total Créditos: $totcreditos ");
 //print_r("<br> Total Consumido: ".number_format($totconsumido,2));
-print_r("<br> Saldo: ".number_format($saldo,2));
+//print_r("<br> Saldo: ".number_format($saldo,2));
 //print_r("<br> Quantidade máxima: ".number_format($qtdmaxima,3));
-print_r("<br> Quantidade/Porção: ".number_format($quantidade,3));
-print_r("<br> Valor Unitário: $valuni ");
-print_r("<br> Valor total deste lançamento: ".number_format($valtot,2));
+//print_r("<br> Quantidade/Porção: ".number_format($quantidade,3));
+//print_r("<br> Valor Unitário: $valuni ");
+//print_r("<br> Valor total deste lançamento: ".number_format($valtot,2));
 
 
 
@@ -132,7 +135,7 @@ $sql="
 		$valtot
 	);
 ";
-if (!$query=mysql_query($sql)) die("Erro SQL: ".mysql_error());
-$dados=mysql_fetch_assoc($query);
+if (!$query=mysql_query($sql)) die("Erro de SQL ao inserir o consumo no atendimento! ".mysql_error());
+echo "<br>FINALIZADO";
 
 ?>

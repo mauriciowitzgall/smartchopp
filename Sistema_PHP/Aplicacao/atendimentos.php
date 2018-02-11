@@ -28,8 +28,8 @@ if ($busca!="") {
 $tpl->BUSCA=$busca;
 
 $sql="
-	SELECT a.codigo as codigo, csm.nome as consumidor, a.modalidade as modalidade, a.situacao as situacao
-	FROM atendimentos a
+	SELECT a.codigo as codigo, csm.nome as consumidor, a.modalidade as modalidade, a.situacao as situacao, a.datahora as data_inicio, a.datahora_finalizacao as data_saida
+	FROM atendimentos a 
 	LEFT JOIN atendimentos_itens at on (a.codigo=at.atendimento)
 	LEFT JOIN chopeiras cpr ON (at.chopeira_codigo=cpr.codigo)	
 	LEFT JOIN equipamentos eqp ON (cpr.equipamento=eqp.codigo)	
@@ -71,6 +71,7 @@ while ($dados=mysql_fetch_assoc($query)) {
 	$codigo=$dados["codigo"];
 	$situacao=$dados["situacao"];
 	$tpl->CODIGO=$dados["codigo"];
+	$tpl->DATA_INICIO=converte_datahorabanco_para_datahoratela3($dados["data_inicio"]);
 
 	//Cor da linha
 	if ($situacao==0) {
@@ -137,6 +138,12 @@ while ($dados=mysql_fetch_assoc($query)) {
 	} else {
 		$tpl->SITUACAO_CLASSE="";
 	}	
+
+	//Data Saida
+	$data_saida=$dados["data_saida"];		
+	if ($data_saida=="") $data_saida="---";
+	else $data_saida=converte_datahorabanco_para_datahoratela3($data_saida);
+	$tpl->DATA_SAIDA="$data_saida";
 
 	//Icone créditos
 	if ($modalidade==1) $tpl->block("BLOCK_CREDITOS");

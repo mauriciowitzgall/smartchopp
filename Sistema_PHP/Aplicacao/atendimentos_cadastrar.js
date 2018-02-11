@@ -42,3 +42,26 @@ function verifica_consumidor (telefone) {
 		$("#consumidor").focus();
 	}
 }
+
+function valida_cartao (rfid) {
+	//06 89 16 9E
+	if (rfid!="") {
+		$.post("ajax_verifica_cartao.php", { 
+			rfid: rfid 
+		}, function(valor) {
+			//alert(valor);
+			valor=valor.split("|");
+			consumidor=valor[1];
+			permicao=valor[0];
+			if (permicao=="permitido") {
+				//alert("Liberado");
+			} else if (permicao=="duplicado" ){			
+				alert("Este cartão já está sendo usado por "+consumidor);
+				$("#rfid").val("");
+				$("#rfid").focus();
+			} else {
+				alert("Erro!");
+			}
+		});
+	}
+}

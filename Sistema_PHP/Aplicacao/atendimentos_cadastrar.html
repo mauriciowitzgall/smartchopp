@@ -5,7 +5,7 @@
     <div class="control-group">
       <label class="control-label"><strong>Cartão *</strong></label>
       <div class="controls">
-        <input class="input-medium" type="text" placeholder="" name="rfid" id="rfid" value="{RFID}" required>
+        <input class="input-medium" type="text" placeholder="" name="rfid" id="rfid" value="{RFID}" required onblur="valida_cartao(this.value)">
       </div>
     </div> 
     <div class="control-group">

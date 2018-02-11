@@ -64,11 +64,18 @@ while ($dados=mysql_fetch_assoc($query)) {
 	$tpl->RFID=$dados["cartao_rfid"];
 	$rfid=$dados["cartao_rfid"];
 	$tpl->REFERENCIA=$dados["cartao_referencia"];
-	$sql3="SELECT a.datahora, csm.nome as consumidor_nome FROM atendimentos a JOIN consumidores csm on (a.consumidor=csm.codigo) WHERE a.cartao like '%$codigo%' ORDER BY a.datahora DESC LIMIT 1";
+	$sql3="SELECT a.datahora, csm.nome as consumidor_nome,a.situacao as atendimento_ativo FROM atendimentos a JOIN consumidores csm on (a.consumidor=csm.codigo) WHERE a.cartao like '%$codigo%' ORDER BY a.datahora DESC LIMIT 1";
 	if (!$query3=mysql_query($sql3)) die("Erro SQL 3: ".mysql_error());
 	$dados3=mysql_fetch_assoc($query3);
 	$ultimo_consumidor=$dados3["consumidor_nome"];
-	$tpl->ULTIMO_CONSUMIDOR=$ultimo_consumidor;
+	$atendimento_ativo=$dados3["atendimento_ativo"];
+	if ($ultimo_consumidor=="") {
+		$tpl->ULTIMO_CONSUMIDOR="---";
+	} else{
+		if ($atendimento_ativo==1) $ativo="";
+		else $ativo="(encerrado)";
+		$tpl->ULTIMO_CONSUMIDOR="$ultimo_consumidor $ativo";
+	}
 	
 
 	$tpl->block("BLOCK_EDITAR");

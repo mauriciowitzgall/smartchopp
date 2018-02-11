@@ -27,16 +27,15 @@
             <strong>Situação</strong><br>
             <input class="input-medium " type="text" value="{SITUACAO}" disabled="" align="center">
           </label> 
-
-        </td>
+        </td>        
         <td>
           &nbsp;<br>
            <!-- BEGIN BLOCK_BOTAO_INCLUIR -->
-           <a class="btn btn-primary" href="atendimentos_creditos_cadastrar.php?operacao=1&atendimento={ATENDIMENTO}" title="Cadastrar"><i class="icon-plus  icon-white"></i> Inserir crédito</a>
+           <a class="btn btn-primary" href="atendimentos_consumo_cadastrar.php?operacao=1&atendimento={ATENDIMENTO}" title="Cadastrar"><i class="icon-plus  icon-white"></i> Inserir Consumo Manual</a>
            <!-- END BLOCK_BOTAO_INCLUIR -->
            
            <!-- BEGIN BLOCK_BOTAO_INCLUIR_DESABILITADO -->
-           <a class="btn " href="#" title="{BOTAO_INCLUIR_DESCRICAO}" disabled><i class="icon-plus"></i> Inserir crédito</a>
+           <a class="btn " href="#" title="{BOTAO_INCLUIR_DESCRICAO}" disabled><i class="icon-plus"></i> Inserir Consumo Manual</a>
            <!-- END BLOCK_BOTAO_INCLUIR_DESABILITADO -->   
         </td>
       </tr>
@@ -50,6 +49,7 @@
     <thead class="thead-inverse">
       <tr>
         <th>#</th>
+        <th>Quando</th>
         <th>Chopeira</th>
         <th>Chope</th>        
         <th>Valor Unitário</th>                
@@ -61,11 +61,20 @@
       <!-- BEGIN BLOCK_LINHA -->
       <tr>
         <th scope="row">{ITEM}</th>
+        <td>{DATAHORA}</td>
         <td>{CHOPEIRA}</td>                
         <td>{CHOPE}</td>
         <td>{VALUNI}</td>
         <td>{QTD}</td>
-        <td>{VALTOT}</td>                
+        <td>{VALTOT}</td> 
+        <td>     
+          <!-- BEGIN BLOCK_DELETAR -->       
+          <a class="btn btn-danger" href="atendimentos_consumo_deletar.php?atendimento={ATENDIMENTO}&item={ITEM}" title="Remover"><i class="icon-trash  icon-white"></i></a>
+          <!-- END BLOCK_DELETAR -->       
+          <!-- BEGIN BLOCK_DELETAR_DESABILITADO -->
+            <a class="btn disabled" href="#" title="{DELETAR_DESCRICAO}" ><i class="icon-trash"></i></a>
+          <!-- END BLOCK_DELETAR_DESABILITADO -->              
+        </td>                        
       </tr>
       <!-- END BLOCK_LINHA -->
       <!-- BEGIN BLOCK_LINHA_NADA -->

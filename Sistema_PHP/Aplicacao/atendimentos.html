@@ -26,11 +26,13 @@
     <thead class="thead-inverse">
       <tr>
         <th>#</th>
+        <th>Entrada</th>
         <th>Consumidor</th>
         <th>Modalidade</th>        
-        <th>Saldo</th>                
+        <th>Saldo Disponível</th>                
         <th>Servidas</th>                
         <th>Situação</th>                
+        <th>Saída</th>                
         <th width="28%" colspan="5">Operações</th>
       </tr>
     </thead>
@@ -38,11 +40,13 @@
       <!-- BEGIN BLOCK_LINHA -->
       <tr class="{LINHA_CLASSE}">
         <th scope="row">{CODIGO}</th>
+        <td>{DATA_INICIO}</td>                
         <td>{CONSUMIDOR}</td>                
         <td><span class="{MODALIDADE_CLASSE}">{MODALIDADE}</span></td>
         <td>{SALDO}</td>        
         <td>{ITENS}</td>        
         <td><span class="{SITUACAO_CLASSE}">{SITUACAO}</span></td>        
+        <td><span class="text-error">{DATA_SAIDA}</span></td>                
         <td>
           <!-- BEGIN BLOCK_CONSUMO -->
             <a class="btn btn-inverse" href="atendimentos_consumo.php?codigo={CODIGO}" title="Consumo"><i class=" icon-th-list icon-white"></i> Consumo</a>

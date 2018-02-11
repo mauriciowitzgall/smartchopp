@@ -4,6 +4,9 @@ include("html_cabecalho.html");
 require("templates/Template.class.php");
 error_reporting(E_ERROR | E_PARSE);
 
+//Define fuso horário atual para função DATE
+date_default_timezone_set('America/Sao_Paulo');
+
 include("conexao.php");
 include("funcoes.php");
 
