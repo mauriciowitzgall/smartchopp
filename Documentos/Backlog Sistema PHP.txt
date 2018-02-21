@@ -11,3 +11,7 @@ FUNCIONAL
 - não permitir vincular um equipamento a mais de uma chopeira
 - criar uma coluna nova na listagem de consumo que mostra se foi um lançamento pela smartbox ou manual
 - criar inativação de chopeiras, e criar validação para nao permitir excluir chopeira que estão em qualquer consumo 
+- Atualizar a pagina principal automaticamente
+- Retornar nome do usuário para poder printar na tela
+- Quando o sistema de tranca atinge o limite máximo de mls deixa passar algums mls e já envia pro servidor, porém o sistema nao salva o que foi enviado,assim ele continua com o último saldo, pois está proibido valores acima do permitido
+- Eliminar item configuracoes
