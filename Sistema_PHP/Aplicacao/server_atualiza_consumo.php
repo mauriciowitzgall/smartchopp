@@ -98,19 +98,18 @@ $valtot=$valuni*$quantidade;
 //print_r("<br> Chope: $chope");
 //print_r("<br> Total Créditos: $totcreditos ");
 //print_r("<br> Total Consumido: ".number_format($totconsumido,2));
-//print_r("<br> Saldo: ".number_format($saldo,2));
+print_r("<br> Saldo: ".number_format($saldo,2));
 //print_r("<br> Quantidade máxima: ".number_format($qtdmaxima,3));
 //print_r("<br> Quantidade/Porção: ".number_format($quantidade,3));
 //print_r("<br> Valor Unitário: $valuni ");
-//print_r("<br> Valor total deste lançamento: ".number_format($valtot,2));
+print_r("<br> Valor total deste lançamento: ".number_format($valtot,2));
 
 
-
-if ($valtot > $saldo) {
-	
-	echo "<br><br>ERRO: O valor total deste lançamento é maior que o saldo disponível <br>";
-	exit;
-}
+//Verifica se valor a ser inserido é maiorque o maximo permitido, com uma pequena tolerancia
+//if (($valtot-) > $saldo) {
+	//echo "<br><br>ERRO: O valor total deste lançamento é maior que o saldo disponível <br>";
+	//exit;
+//}
 
 print_r("<br> Saldo novo: ".number_format($saldo-$valtot,2));
 

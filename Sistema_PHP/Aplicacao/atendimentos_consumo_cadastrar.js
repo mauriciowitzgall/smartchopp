@@ -39,4 +39,15 @@ function atualiza_valtot (qtd) {
 	valuni=valuni.replace(",",".");
 	valtot=valuni*qtd;	
 	$("#valtot").val("R$ "+valtot.number_format(2,",",""));
+	saldo=$("#saldo").val();
+	saldo=saldo.replace("R$ ","");
+	saldo=saldo.replace(".","");
+	saldo=saldo.replace(",",".");	
+	if (valtot>saldo) {
+		alert("A quantidade digitada gera uma valor total de consumo maior que o saldo disponível");
+		$("#qtd").val("");
+		$("#qtd").focus();
+		$("#valtot").val("R$ 0,00");;	
+	}
 }
+
