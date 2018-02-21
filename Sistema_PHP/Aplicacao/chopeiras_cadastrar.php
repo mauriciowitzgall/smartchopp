@@ -41,7 +41,7 @@ while ($dados=mysql_fetch_assoc($query)) {
 }
 
 //Equipamentos
-$sql="SELECT * FROM equipamentos";
+$sql="SELECT codigo, nome FROM equipamentos WHERE codigo not in (SELECT DISTINCT equipamento FROM chopeiras WHERE ativo=1)";
 if (!$query=mysql_query($sql)) die("Erro SQL 2: ".mysql_error());
 while ($dados=mysql_fetch_assoc($query)) {
 	$tpl->OPTION_EQUIPAMENTO_VALOR=$dados["codigo"];
