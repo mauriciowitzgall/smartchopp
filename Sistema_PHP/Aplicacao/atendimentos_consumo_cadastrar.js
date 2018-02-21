@@ -30,7 +30,8 @@ function atualiza_chope(chopeira) {
 
 
 function atualiza_valtot (qtd) {
-	//alert(qtd);
+	//qtd=$("#qtd").val();
+	console.log(qtd);
 	qtd=qtd.replace(".","");
 	qtd=qtd.replace(",",".");
 	valuni=$("#valuni").val();
