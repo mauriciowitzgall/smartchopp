@@ -28,6 +28,16 @@ function verifica_consumidor (telefone) {
 				$("#consumidor").val(nome);
 				document.forms["form1"].consumidor.disabled = true;
 				$("#creditoinicial").focus();
+				//Verifica qual é o ultimo saldo do consumidor no local, e popula saldo anterior
+
+				$.post("ajax_verifica_saldoanterior.php", { 
+					consumidor: codigo 
+				}, function(valor) {
+					creditoanterior=parseFloat(valor);
+					console.log(creditoanterior);
+					$("#creditoanterior").val("R$ "+creditoanterior.number_format(2,",",""));
+					
+				});
 			}
 
 		});
@@ -64,4 +74,23 @@ function valida_cartao (rfid) {
 			}
 		});
 	}
+}
+
+function valida_credito_inicial(valor) {
+	//console.log(valor);
+	creditoinicial=valor.replace("R$ ","");
+	creditoinicial=creditoinicial.replace(".","");
+	creditoinicial=creditoinicial.replace(",",".");
+	//console.log(creditoinicial);
+
+	creditoanterior=$("input[name=creditoanterior]").val();
+	creditoanterior=creditoanterior.replace("R$ ","");
+	creditoanterior=creditoanterior.replace(".","");
+	creditoanterior=creditoanterior.replace(",",".");
+	//console.log(creditoanterior);
+
+	totalcreditoinicial=parseFloat(creditoanterior)+parseFloat(creditoinicial);
+
+	$("input[name=totalcreditoinicial]").val("R$ "+totalcreditoinicial.number_format(2,",",""));
+
 }

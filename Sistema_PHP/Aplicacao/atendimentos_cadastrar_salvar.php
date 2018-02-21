@@ -47,13 +47,27 @@ if ($consumidor_id > 0) {
 
 
 
+
 //Se for CADASTRO novo
 if ($operacao==1) {
-	echo $sql="
+
+	//Inserir atendimento
+	$sql="
 		INSERT INTO atendimentos (cartao,consumidor,modalidade,situacao) VALUES ('$cartao_codigo','$consumidor_codigo','$modalidade',1);
 	";
 	if (!$query=mysql_query($sql)) die("Erro SQL INSERT: ".mysql_error());
 	$atendimento_ultimo=mysql_insert_id();	
+	
+	//Verifica se tem credito de antendimentos anteriores e insere como credito inicial
+	$sql="SELECT * FROM atendimentos where consumidor=$consumidor_codigo and situacao=0 ORDER BY codigo DESC LIMIT 1";
+	if (!$query=mysql_query($sql)) die("Erro SQL: ".mysql_error());
+	$dados=mysql_fetch_assoc($query);
+	$creditoanterior=$dados["saldo_diferenca"];
+	if ($creditoanterior>0) {
+		$sql1="INSERT INTO atendimentos_creditos (atendimento,valor) VALUES ('$atendimento_ultimo','$creditoanterior')";
+		if (!$query1=mysql_query($sql1)) die("Erro SQL INSERT Crédito: ".mysql_error());
+	}
+
 	//Inserir crédito inicial
 	$sql1="INSERT INTO atendimentos_creditos (atendimento,valor) VALUES ('$atendimento_ultimo','$creditoinicial')";
 	if (!$query1=mysql_query($sql1)) die("Erro SQL INSERT Crédito: ".mysql_error());

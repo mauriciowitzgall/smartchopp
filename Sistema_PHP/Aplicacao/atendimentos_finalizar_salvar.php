@@ -38,7 +38,7 @@ if (!$query3=mysql_query($sql3)) die("Erro SQL 3: ".mysql_error());
 $dados3=mysql_fetch_assoc($query3);
 $totconsumido=$dados3["valtot"];
 $saldo=$totcreditos-$totconsumido;
-$saldo_diferenca=$saldo-$saldodevolvido;
+$saldo_diferenca=$saldo-$saldo_devolvido;
 
 $sql="
 	UPDATE atendimentos SET situacao=0,saldo_devolvido='$saldo_devolvido',datahora_finalizacao='$datahora_fim', totcreditos='$totcreditos',totconsumo='$totconsumido',saldo='$saldo',saldo_diferenca='$saldo_diferenca' WHERE codigo=$codigo

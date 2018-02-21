@@ -33,11 +33,23 @@
       </div> 
     </div>
     <div class="control-group">
+      <label class="control-label">Sobra de Crédito Anterior</label>
+      <div class="controls">
+        <input class="input-medium" disabled type="text" placeholder="" name="creditoanterior" id="creditoanterior" value="{CREDITOANTERIOR}" required>
+      </div>
+    </div>    
+    <div class="control-group">
       <label class="control-label"><strong>Crédito Inicial *</strong></label>
       <div class="controls">
-        <input class="input-medium" type="text" placeholder="R$ 0,00" name="creditoinicial" id="creditoinicial" value="{CREDITOINICIAL}" required>
+        <input class="input-medium" type="text" placeholder="R$ 0,00" name="creditoinicial" id="creditoinicial" value="{CREDITOINICIAL}" required onkeyup="valida_credito_inicial(this.value)" onblur="valida_credito_inicial(this.value)">
       </div>
     </div>
+    <div class="control-group">
+      <label class="control-label">Total Crédito Inicial</label>
+      <div class="controls">
+        <input class="input-medium" disabled type="text" placeholder="" name="totalcreditoinicial" id="totalcreditoinicial" value="{TOTALCREDITOINICIAL}" required>
+      </div>
+    </div>      
     <div class="control-group">
       <div class="controls">
         <button type="submit" class="btn btn-primary">Salvar</button>

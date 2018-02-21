@@ -5,7 +5,6 @@ VISUAL
 - trocar os Alerts por popups/modal bootstrap
 
 FUNCIONAL
-- quando for realizar novo atendimento verificar se tem saldo pendente anterior e mostrar na tela o saldo anterior para que ela possa usar, sugerir se quer crédito novo.
 - não permitir vincular um equipamento a mais de uma chopeira
 - criar inativação de chopeiras, e criar validação para nao permitir excluir chopeira que estão em qualquer consumo 
 - Atualizar a pagina principal automaticamente
