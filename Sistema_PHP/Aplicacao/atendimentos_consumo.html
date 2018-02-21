@@ -55,6 +55,8 @@
         <th>Valor Unitário</th>                
         <th>Quantidade (litro)</th>        
         <th>Valor total</th>                
+        <th></th>                
+        <th></th>                
       </tr>
     </thead>
     <tbody>
@@ -67,6 +69,13 @@
         <td>{VALUNI}</td>
         <td>{QTD}</td>
         <td>{VALTOT}</td> 
+        <td>
+          <!-- BEGIN BLOCK_LANCADOR_EQUIPAMENTO -->     
+          <span><i class="icon-hdd" title="Lançamento via equipamento/box"></i></span></td> 
+          <!-- END BLOCK_LANCADOR_EQUIPAMENTO -->   
+          <!-- BEGIN BLOCK_LANCADOR_MANUAL -->     
+          <span><i class=" icon-upload" title="Lançamento manual"></i></span></td> 
+          <!-- END BLOCK_LANCADOR_MANUAL -->     
         <td>     
           <!-- BEGIN BLOCK_DELETAR -->       
           <a class="btn btn-danger" href="atendimentos_consumo_deletar.php?atendimento={ATENDIMENTO}&item={ITEM}" title="Remover"><i class="icon-trash  icon-white"></i></a>

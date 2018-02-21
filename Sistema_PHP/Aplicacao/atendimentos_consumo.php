@@ -12,7 +12,7 @@ $atendimento=$_GET["codigo"];
 $tpl = new Template("atendimentos_consumo.html");
 $tpl->ATENDIMENTO="$atendimento";
 $sql="
-	SELECT at.item as item, at.valor_unitario as valuni, at.valor_total as valtot, chope, chopeira, quantidade, at.datahora as datahora
+	SELECT at.item as item, at.valor_unitario as valuni, at.valor_total as valtot, chope, chopeira, quantidade, at.datahora as datahora, at.lancador as lancador
 	FROM atendimentos_itens at 
 	WHERE at.atendimento=$atendimento
 	$filtro_paginacao	
@@ -99,6 +99,8 @@ $tpl->block("BLOCK_BOTAO_INCLUIR");
 //Lista de itens
 if (!$query=mysql_query($sql)) die("Erro SQL: ".mysql_error());
 while ($dados=mysql_fetch_assoc($query)) {
+	if ($dados["lancador"]==1) 	$tpl->block("BLOCK_LANCADOR_EQUIPAMENTO");
+	else if ($dados["lancador"]==2) $tpl->block("BLOCK_LANCADOR_MANUAL");	
 	$tpl->ITEM=$dados["item"];
 	$tpl->DATAHORA=converte_datahorabanco_para_datahoratela3($dados["datahora"]);
 	$tpl->CHOPE=$dados["chope"];

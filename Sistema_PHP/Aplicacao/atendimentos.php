@@ -28,7 +28,7 @@ if ($busca!="") {
 $tpl->BUSCA=$busca;
 
 $sql="
-	SELECT a.codigo as codigo, csm.nome as consumidor, a.modalidade as modalidade, a.situacao as situacao, a.datahora as data_inicio, a.datahora_finalizacao as data_saida
+	SELECT a.codigo as codigo, csm.nome as consumidor, a.modalidade as modalidade, a.situacao as situacao, a.datahora as data_inicio, a.datahora_finalizacao as data_saida, car.rfid as rfid
 	FROM atendimentos a 
 	LEFT JOIN atendimentos_itens at on (a.codigo=at.atendimento)
 	LEFT JOIN chopeiras cpr ON (at.chopeira_codigo=cpr.codigo)	
@@ -71,6 +71,7 @@ while ($dados=mysql_fetch_assoc($query)) {
 	$codigo=$dados["codigo"];
 	$situacao=$dados["situacao"];
 	$tpl->CODIGO=$dados["codigo"];
+	$tpl->CARTAO=$dados["rfid"];
 	$tpl->DATA_INICIO=converte_datahorabanco_para_datahoratela3($dados["data_inicio"]);
 
 	//Cor da linha

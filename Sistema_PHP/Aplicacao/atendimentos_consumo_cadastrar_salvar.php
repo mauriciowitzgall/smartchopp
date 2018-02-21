@@ -35,7 +35,7 @@ error_reporting(E_ERROR | E_PARSE);
 //Se for CADASTRO novo
 if ($operacao==1) {
 	echo $sql="
-		INSERT INTO atendimentos_itens (atendimento, datahora, quantidade, valor_unitario, chopeira, chope, valor_total, chope_codigo,chopeira_codigo) VALUES ('$atendimento','$datahora', '$qtd', '$valuni', '$chopeira_nome', '$chope_nome', '$valtot', '$chope', '$chopeira');
+		INSERT INTO atendimentos_itens (atendimento, datahora, quantidade, valor_unitario, chopeira, chope, valor_total, chope_codigo,chopeira_codigo,lancador) VALUES ('$atendimento','$datahora', '$qtd', '$valuni', '$chopeira_nome', '$chope_nome', '$valtot', '$chope', '$chopeira',2);
 	";
 	if (!$query=mysql_query($sql)) die("Erro SQL INSERT: ".mysql_error());
 } else if ($operacao==2) {

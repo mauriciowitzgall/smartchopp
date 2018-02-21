@@ -122,7 +122,8 @@ $sql="
 		valor_unitario,
 		chopeira,
 		chope,
-		valor_total
+		valor_total,
+		lancador
 	)
 	VALUES
 	(
@@ -132,7 +133,8 @@ $sql="
 		$valuni,
 		'$chopeira_nome',
 		'$chope_nome',
-		$valtot
+		$valtot,
+		1
 	);
 ";
 if (!$query=mysql_query($sql)) die("Erro de SQL ao inserir o consumo no atendimento! ".mysql_error());

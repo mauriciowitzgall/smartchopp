@@ -7,6 +7,5 @@ VISUAL
 FUNCIONAL
 - quando for realizar novo atendimento verificar se tem saldo pendente anterior e mostrar na tela o saldo anterior para que ela possa usar, sugerir se quer crédito novo.
 - não permitir vincular um equipamento a mais de uma chopeira
-- criar uma coluna nova na listagem de consumo que mostra se foi um lançamento pela smartbox ou manual
 - criar inativação de chopeiras, e criar validação para nao permitir excluir chopeira que estão em qualquer consumo 
 - Atualizar a pagina principal automaticamente
