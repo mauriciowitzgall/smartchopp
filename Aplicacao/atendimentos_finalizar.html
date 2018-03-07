@@ -25,27 +25,37 @@
       <div class="controls">
         <input class="input-large" type="text" value="{DATAHORA_FIM}" disabled="" align="center">
       </div>
-    </div>  
+    </div>
     <div class="control-group">
+      <label class="control-label"><span class="">Modalidade</span></label>
+      <div class="controls">
+        <input class="input-small" type="text" value="{MODALIDADE}" disabled="" align="center">
+      </div>
+    </div>  
+    <!-- BEGIN BLOCK_TOTCREDITOS -->
+    <div class="control-group" id="linha_totcreditos">
       <label class="control-label"><span class="text-info">Total Créditos</span></label>
       <div class="controls">
         <input class="input-medium" type="text" placeholder="" disabled value="{TOTCREDITOS}">
       </div>
     </div>
+    <!-- END BLOCK_TOTCREDITOS -->
     <div class="control-group">
       <label class="control-label"><span class="text-error">Total Consumido</span></label>
       <div class="controls">
         <input class="input-medium" type="text" placeholder="" disabled value="{TOTCONSUMIDO}">
       </div>
     </div>
+    <!-- BEGIN BLOCK_SALDO -->
     <div class="control-group">
       <label class="control-label">Saldo</label>
       <div class="controls">
         <input class="input-medium" type="text" placeholder="" disabled value="{SALDO}">
       </div>
     </div>
+    <!-- END BLOCK_SALDO -->
     <div class="control-group">
-      <label class="control-label"><strong>Slado devolvido *</strong></label>
+      <label class="control-label"><strong>{SALDODEVOLVIDO_TITULO} *</strong></label>
       <div class="controls">
         <input class="input-medium" type="text" placeholder="R$ 0,00" name="saldodevolvido" id="saldodevolvido" value="{SALDODEVOLVIDO}" required="">
       </div>

@@ -16,7 +16,7 @@ $datahora_fim=$dataatual = date("Y-m-d H:i:s");
 
 //Pega nome do consumidor
 $sql="
-	SELECT csm.nome as consumidor,a.datahora as datahora_inicio
+	SELECT csm.nome as consumidor,a.datahora as datahora_inicio, a.modalidade as modalidade
 	FROM atendimentos a 
 	LEFT JOIN consumidores csm on (a.consumidor=csm.codigo)	
 	WHERE a.codigo=$atendimento
@@ -26,6 +26,20 @@ $dados=mysql_fetch_assoc($query);
 $tpl->CONSUMIDOR=$dados["consumidor"];	
 $tpl->DATAHORA_INI=converte_datahora4($dados["datahora_inicio"]);	
 $tpl->DATAHORA_FIM=converte_datahora4($datahora_fim);	
+$modalidade=$dados["modalidade"];
+if ($modalidade==1) $tpl->MODALIDADE="Pré-Pago";	
+else if ($modalidade==2) $tpl->MODALIDADE="Pós-Pago";
+else $tpl->MODALIDADE="Desconhecido";
+
+if ($modalidade==1) {
+	$tpl->block("BLOCK_TOTCREDITOS"); 
+	$tpl->block("BLOCK_SALDO"); 
+	$tpl->SALDODEVOLVIDO_TITULO="Valor Devolvido";
+} else {
+	$tpl->SALDODEVOLVIDO_TITULO="Valor Recebido";
+}
+
+
 
 //Saldo
 //Verifica qual é o total de crédito efetuados

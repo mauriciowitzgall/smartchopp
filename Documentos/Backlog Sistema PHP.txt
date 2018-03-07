@@ -3,7 +3,9 @@ VISUAL
 - inserir um titulo nas telas de listagem de creditos e consumo, e sub telas (cadastro, salvar, deletar)
 - colocar tela de confirmação de exclusão todas as telas
 - trocar os Alerts por popups/modal bootstrap
+- na tela de atendimentos trocar a coluna atendimento por uma coluna com icones, tipo sinaleira, verde é aberto, vermelho fechado
 
 FUNCIONAL
-- criar inativação de chopeiras, e criar validação para nao permitir excluir chopeira que estão em qualquer consumo 
+- Criar inativação de chopeiras, e criar validação para nao permitir excluir chopeira que estão em qualquer consumo 
 - Atualizar a pagina principal automaticamente
+- quando for pos pago, inserir um limite da credito para que o usu‡rio nao extrapole e fuja. 

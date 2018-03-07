@@ -55,6 +55,8 @@ $sql0="
 if (!$query0=mysql_query($sql0)) die("Erro SQL 2: ".mysql_error());
 $dados0=mysql_fetch_assoc($query0);
 
+
+
 //Consumidor
 $tpl->CONSUMIDOR=$dados0["consumidor"];
 
@@ -86,14 +88,21 @@ if (!$query3=mysql_query($sql3)) die("Erro SQL 3: ".mysql_error());
 $dados3=mysql_fetch_assoc($query3);
 $totconsumido=$dados3["valtot"];
 $saldo=$totcreditos-$totconsumido;
-$tpl->SALDO="R$ ".number_format($saldo,2);
+if ($modalidade==2) $saldo=$totconsumido;
+else $saldo=$totcreditos-$totconsumido;
+
+if ($situacao==1) {
+	$tpl->SALDO="R$ ".number_format($saldo,2,",","");
+	$tpl->block("BLOCK_SALDO");
+}
 
 //Situação
 $situacao=$dados0["situacao"];
 if ($situacao==0) $tpl->SITUACAO="Encerrado";
 else  $tpl->SITUACAO="Em andamento";
 
-$tpl->block("BLOCK_BOTAO_INCLUIR");
+if ($situacao==1) $tpl->block("BLOCK_BOTAO_INCLUIR");
+else $tpl->block("BLOCK_BOTAO_INCLUIR_DESABILITADO");
 
 
 //Lista de itens
@@ -108,7 +117,8 @@ while ($dados=mysql_fetch_assoc($query)) {
 	$tpl->VALUNI="R$ ".number_format($dados["valuni"],2,",","");
 	$tpl->QTD=number_format($dados["quantidade"],3,",","")."";
 	$tpl->VALTOT="R$ ". number_format($dados["valtot"],2,",","");
-	$tpl->block("BLOCK_DELETAR");
+	if ($situacao==0) $tpl->block("BLOCK_DELETAR_DESABILITADO");
+	else $tpl->block("BLOCK_DELETAR");
 	$tpl->block("BLOCK_LINHA");
 }
 $linhas=mysql_num_rows($query);

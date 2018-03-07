@@ -14,7 +14,7 @@ $tpl->ITEM=$item;
 $tpl->OPERACAO=$operacao;
 
 $sql="
-	SELECT csm.nome as consumidor
+	SELECT csm.nome as consumidor, a.modalidade as modalidade
 	FROM atendimentos_creditos as ac
 	LEFT JOIN atendimentos a on (ac.atendimento=a.codigo)	
 	LEFT JOIN consumidores csm on (a.consumidor=csm.codigo)	
@@ -22,7 +22,9 @@ $sql="
 ";
 if (!$query=mysql_query($sql)) die("Erro SQL 1: ".mysql_error());
 $dados=mysql_fetch_assoc($query);
+$modalidade=$dados["modalidade"];	
 $tpl->CONSUMIDOR=$dados["consumidor"];	
+$tpl->MODALIDADE=$dados["modalidade"];	
 
 //Saldo
 //Verifica qual é o total de crédito efetuados
@@ -44,7 +46,8 @@ $totconsumido=0;
 if (!$query3=mysql_query($sql3)) die("Erro SQL 3: ".mysql_error());
 $dados3=mysql_fetch_assoc($query3);
 $totconsumido=$dados3["valtot"];
-$saldo=$totcreditos-$totconsumido;
+if ($modalidade==2) $saldo=$totconsumido;
+else $saldo=$totcreditos-$totconsumido;
 $tpl->SALDO="R$ ".number_format($saldo,2,",","");
 
 

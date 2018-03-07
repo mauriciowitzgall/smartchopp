@@ -59,11 +59,11 @@ if ($operacao==1) {
 	$atendimento_ultimo=mysql_insert_id();	
 	
 	//Verifica se tem credito de antendimentos anteriores e insere como credito inicial
-	$sql="SELECT * FROM atendimentos where consumidor=$consumidor_codigo and situacao=0 ORDER BY codigo DESC LIMIT 1";
+	$sql="SELECT * FROM atendimentos where consumidor=$consumidor_codigo and situacao=0 and modalidade=1 ORDER BY codigo DESC LIMIT 1";
 	if (!$query=mysql_query($sql)) die("Erro SQL: ".mysql_error());
 	$dados=mysql_fetch_assoc($query);
 	$creditoanterior=$dados["saldo_diferenca"];
-	if ($creditoanterior>0) {
+	if ($creditoanterior != 0 ) {
 		$sql1="INSERT INTO atendimentos_creditos (atendimento,valor) VALUES ('$atendimento_ultimo','$creditoanterior')";
 		if (!$query1=mysql_query($sql1)) die("Erro SQL INSERT Crédito: ".mysql_error());
 	}

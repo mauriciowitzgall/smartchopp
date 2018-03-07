@@ -8,6 +8,8 @@ window.onload = function(){
 	});
 
 	$("#rfid").focus();
+
+	valida_modalidade(); //Necessário caso haja edição de um atendimento. 
 }
 
 function verifica_consumidor (telefone) {
@@ -73,6 +75,21 @@ function valida_cartao (rfid) {
 				alert("Erro!");
 			}
 		});
+	}
+}
+
+function valida_modalidade() {
+	modalidade=$("select[name=modalidade]").val();
+	if (modalidade==2) {
+		$("#linha_sobra").hide();
+		$("#linha_creditoinicial").hide();
+		$("#linha_total").hide();
+		$("input[name=creditoinicial]").attr("required", false);
+	} else {
+		$("#linha_sobra").show();
+		$("#linha_creditoinicial").show();
+		$("#linha_total").show();		
+		$("input[name=creditoinicial]").attr("required", true);
 	}
 }
 

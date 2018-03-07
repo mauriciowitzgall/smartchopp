@@ -119,8 +119,14 @@ while ($dados=mysql_fetch_assoc($query)) {
 	$dados3=mysql_fetch_assoc($query3);
 	$totconsumido=$dados3["valtot"];
 
-	$saldo=$totcreditos-$totconsumido;
-	$tpl->SALDO="R$ ".number_format($saldo,2,",","");
+	$saldo=$totcreditos-$totconsumido+$saldoanterior;
+	if ($modalidade==2) {
+		$tpl->SALDO_CLASSE="text-error";
+		$tpl->SALDO="R$ ".number_format($totconsumido,2,",","");
+	} else {
+		$tpl->SALDO_CLASSE="";
+		$tpl->SALDO="R$ ".number_format($saldo,2,",","");
+	}
 
 	//Itens
 	$sql4="SELECT count(item) as itens FROM atendimentos_itens WHERE atendimento=$codigo";
