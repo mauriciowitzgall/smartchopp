@@ -47,7 +47,7 @@ $atendimento=$dados["atendimento_codigo"];
 
 //Verifica qual é o nome do consumidor
 $sql="
-	SELECT csm.nome as nome
+	SELECT csm.nome as nome, a.modalidade as modalidade
 	FROM atendimentos a
 	JOIN consumidores csm on  (a.consumidor=csm.codigo)	
 	WHERE a.codigo=$atendimento	
@@ -55,6 +55,7 @@ $sql="
 if (!$query=mysql_query($sql)) die("Erro SQL 5: ".mysql_error());
 $dados=mysql_fetch_assoc($query);
 $consumidor_nome=$dados["nome"];
+$modalidade=$dados["modalidade"];
 
 
 //Verifica qual é o valor unitário do chope
@@ -114,6 +115,6 @@ $qtdmaxima=number_format($qtdmaxima,3);
 $valuni=number_format($valuni,2);
 
 $qtdmaxima=$qtdmaxima*1000;
-echo "1|$valuni|$qtdmaxima|$consumidor_nome";
+echo "1|$valuni|$qtdmaxima|$consumidor_nome|$chope|$modalidade";
 
 ?>
