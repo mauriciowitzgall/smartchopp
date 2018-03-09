@@ -74,6 +74,12 @@ $chope=$dados["chope"];
 //print_r("<br> Chope: $chope");
 //print_r("<br> Valor Unitário: $valuni ");
 
+if ($linhas=mysql_num_rows($query) == 0 ) {
+	echo "-5"; //Equipamento não está vinculado a uma chopeira ou não exite.
+	exit;
+
+}
+
 //Verifica qual é o total de crédito efetuados
 $sql="
 	SELECT sum(ac.valor) as totcreditos
@@ -102,10 +108,13 @@ $totconsumido=$dados["valtot"];
 $saldo=$totcreditos-$totconsumido;
 //print_r("<br> Saldo: ".number_format($saldo,2));
 
-if ($saldo<=0) {
-	//echo "ERRO: Saldo insuficiente
-	echo "-4";
-	exit;		
+
+if ($modalidade==1) {
+	if ($saldo<=0) {
+		//echo "ERRO: Saldo insuficiente
+		echo "-4";
+		exit;		
+	}
 }
 
 
