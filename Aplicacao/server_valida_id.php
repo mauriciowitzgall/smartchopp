@@ -76,7 +76,7 @@ $chope=$dados["chope"];
 
 if ($linhas=mysql_num_rows($query) == 0 ) {
 	echo "-5"; //Equipamento não está vinculado a uma chopeira ou não exite.
-	exit;
+	exit;	
 
 }
 

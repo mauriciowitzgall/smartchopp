@@ -1,0 +1,2 @@
+PROBLEMATICAS
+- Se faltar luz, ou queimar o servidor, como agir? Pensar em algo com RAID, ou rasp reserva, backup em tempo real.
